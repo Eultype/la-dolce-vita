@@ -1,12 +1,18 @@
 "use client";
 
+// Import React
 import { useState, useEffect } from "react";
+// Import Next
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+// Import de Lucide-React
 import { Menu, X, Phone } from "lucide-react";
+// Import composants
 import { Button } from "@/components/ui/button";
+// Import Framer Motion
 import { motion, AnimatePresence } from "framer-motion";
 
+// Liste des liens de navigation
 const navLinks = [
     { href: "/", label: "Accueil" },
     { href: "/menu", label: "Menu" },
@@ -15,6 +21,7 @@ const navLinks = [
     { href: "/contact", label: "Contact" },
 ];
 
+// Composant Navbar
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);

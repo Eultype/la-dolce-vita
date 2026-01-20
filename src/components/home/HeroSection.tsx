@@ -1,10 +1,14 @@
 "use client";
 
+// Import Next
 import Link from "next/link";
 import Image from "next/image";
+// Import composants
 import { Button } from "@/components/ui/button";
+// Import Framer Motion
 import { motion } from "framer-motion";
 
+// Composant section Hero
 const HeroSection = () => {
     return (
         <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">

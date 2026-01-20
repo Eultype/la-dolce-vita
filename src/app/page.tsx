@@ -1,8 +1,14 @@
+import HeroSection from "@/components/home/HeroSection";
 
 export default function Home() {
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <h1>La Dolce Vita</h1>
-        </main>
+        <div className="flex flex-col min-h-screen">
+            <HeroSection />
+
+            {/* Futures sections */}
+            <section className="py-20 text-center">
+                <p className="text-muted-foreground">En construction ...</p>
+            </section>
+        </div>
     );
 }

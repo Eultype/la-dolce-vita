@@ -1,6 +1,9 @@
+// Import Next
 import Link from "next/link";
+// Import de Lucide-React
 import { MapPin, Phone, Mail, Clock, Instagram, Facebook } from "lucide-react";
 
+// Composant Footer
 export function Footer() {
     return (
         <footer className="bg-italian-brown text-primary-foreground">
