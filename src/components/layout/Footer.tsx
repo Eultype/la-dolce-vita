@@ -4,11 +4,11 @@ import { MapPin, Phone, Mail, Clock, Instagram, Facebook } from "lucide-react";
 export function Footer() {
     return (
         <footer className="bg-italian-brown text-primary-foreground">
-            <div className="container mx-auto px-4 py-16">
+            <div className="container mx-auto py-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                     {/* Marque */}
                     <div className="space-y-4">
-                        <h3 className="font-playfair text-2xl font-bold">La Dolce Vita</h3>
+                        <h3 className="font-serif text-2xl font-bold">La Dolce Vita</h3>
                         <p className="text-primary-foreground/70 text-sm leading-relaxed">
                             Une expérience culinaire italienne authentique au cœur de Paris.
                             Tradition, passion et saveurs depuis 1985.
@@ -51,7 +51,7 @@ export function Footer() {
 
                     {/* Coordonnées de contact */}
                     <div className="space-y-4">
-                        <h4 className="font-playfair text-lg font-semibold">Contact</h4>
+                        <h4 className="font-serif text-lg font-semibold">Contact</h4>
                         <ul className="space-y-3 text-sm">
                             {/* Adresse */}
                             <li className="flex items-start gap-3">
@@ -80,7 +80,7 @@ export function Footer() {
 
                     {/* Horaires */}
                     <div className="space-y-4">
-                        <h4 className="font-playfair text-lg font-semibold">Horaires</h4>
+                        <h4 className="font-serif text-lg font-semibold">Horaires</h4>
                         <ul className="space-y-2 text-sm">
                             <li className="flex items-center gap-3">
                                 <Clock className="w-5 h-5 text-accent shrink-0" />
@@ -100,7 +100,7 @@ export function Footer() {
 
                     {/* Navigation */}
                     <div className="space-y-4">
-                        <h4 className="font-playfair text-lg font-semibold">Navigation</h4>
+                        <h4 className="font-serif text-lg font-semibold">Navigation</h4>
                         <ul className="space-y-2 text-sm">
                             {[
                                 { href: "/", label: "Accueil" },
