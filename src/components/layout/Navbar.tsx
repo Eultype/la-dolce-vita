@@ -44,7 +44,7 @@ export function Navbar() {
                             La Dolce Vita
                         </span>
                     </Link>
-                    {/* Desktop Navigation */}
+                    {/* Navigation sur ordinateur */}
                     <div className="hidden md:flex items-center gap-8">
                         {navLinks.map((link) => (
                             <Link
@@ -61,7 +61,7 @@ export function Navbar() {
                         ))}
                     </div>
 
-                    {/* CTA Button & Phone */}
+                    {/* CTA bouton & téléphone */}
                     <div className="hidden md:flex items-center gap-4">
                         <a href="tel:+33123456789" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                             <Phone className="w-4 h-4" />
@@ -72,7 +72,7 @@ export function Navbar() {
                         </Button>
                     </div>
 
-                    {/* Mobile Menu Button */}
+                    {/* Bouton menu mobile */}
                     <button
                         onClick={() => setIsOpen(!isOpen)}
                         className="md:hidden p-2 text-foreground"
@@ -83,7 +83,7 @@ export function Navbar() {
                 </div>
             </div>
 
-            {/* Mobile Menu */}
+            {/* Menu mobile */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
