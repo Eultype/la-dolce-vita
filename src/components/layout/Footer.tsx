@@ -1,141 +1,100 @@
+"use client";
+
 // Import Next
 import Link from "next/link";
-// Import de Lucide-React
-import { MapPin, Phone, Mail, Clock, Instagram, Facebook } from "lucide-react";
+// Import de Lucide Icons
+import { Instagram, Facebook } from "lucide-react";
 
-// Composant Footer
+// Composant du Footer
 export function Footer() {
     return (
-        <footer className="bg-italian-brown text-primary-foreground">
-            <div className="container mx-auto py-16">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-                    {/* Marque */}
-                    <div className="space-y-4">
-                        <h3 className="font-serif text-2xl font-bold">La Dolce Vita</h3>
-                        <p className="text-primary-foreground/70 text-sm leading-relaxed">
-                            Une expérience culinaire italienne authentique au cœur de Paris.
-                            Tradition, passion et saveurs depuis 1985.
+        <footer className="bg-[#1a1512] text-[#f0ebe0] pt-24 pb-12 overflow-hidden relative">
+            <div className="container mx-auto px-6 relative z-10">
+                {/* GRILLE PRINCIPALE - 4 COLONNES EQUILIBRÉES */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-24 border-b border-white/10 pb-16">
+                    
+                    {/* Colonne 1 : Marque & Réseaux */}
+                    <div className="space-y-6">
+                        <h3 className="font-serif text-3xl font-bold tracking-tight">La Dolce <span className="italic text-italian-gold">Vita</span></h3>
+                        <p className="text-white/60 text-sm leading-relaxed max-w-xs">
+                            L'authenticité italienne au cœur de Bruxelles. Une cuisine de passion depuis 1985.
                         </p>
                         <div className="flex gap-4 pt-2">
-                            {/* Instagram */}
-                            <a
-                                href="https://instagram.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="p-2 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors"
-                                aria-label="Instagram"
-                            >
-                                <Instagram className="w-5 h-5" />
+                            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-italian-gold hover:border-italian-gold hover:text-[#1a1512] transition-all duration-300">
+                                <Instagram className="w-4 h-4" />
                             </a>
-                            {/* Facebook */}
-                            <a
-                                href="https://facebook.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="p-2 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors"
-                                aria-label="Facebook"
-                            >
-                                <Facebook className="w-5 h-5" />
-                            </a>
-                            {/* TikTok */}
-                            <a
-                                href="https://tiktok.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="p-2 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors"
-                                aria-label="TikTok"
-                            >
-                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
-                                </svg>
+                            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-italian-gold hover:border-italian-gold hover:text-[#1a1512] transition-all duration-300">
+                                <Facebook className="w-4 h-4" />
                             </a>
                         </div>
                     </div>
 
-                    {/* Coordonnées de contact */}
-                    <div className="space-y-4">
-                        <h4 className="font-serif text-lg font-semibold">Contact</h4>
+                    {/* Colonne 2 : Navigation */}
+                    <div className="space-y-6">
+                        <span className="text-italian-gold text-xs font-bold tracking-[0.2em] uppercase block">
+                            Explorer
+                        </span>
                         <ul className="space-y-3 text-sm">
-                            {/* Adresse */}
-                            <li className="flex items-start gap-3">
-                                <MapPin className="w-5 h-5 mt-0.5 text-accent shrink-0" />
-                                <span className="text-primary-foreground/70">
-                                    42 Rue de la Gastronomie<br />
-                                    75008 Paris, France
-                                </span>
-                            </li>
-                            {/* Téléphone */}
-                            <li className="flex items-center gap-3">
-                                <Phone className="w-5 h-5 text-accent shrink-0" />
-                                <a href="tel:+33123456789" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                                    01 23 45 67 89
-                                </a>
-                            </li>
-                            {/* Email */}
-                            <li className="flex items-center gap-3">
-                                <Mail className="w-5 h-5 text-accent shrink-0" />
-                                <a href="mailto:contact@ladolcevita.fr" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                                    contact@ladolcevita.fr
-                                </a>
-                            </li>
+                            <li><Link href="/" className="text-white/70 hover:text-white hover:translate-x-1 transition-all inline-block">Accueil</Link></li>
+                            <li><Link href="/menu" className="text-white/70 hover:text-white hover:translate-x-1 transition-all inline-block">Notre Carte</Link></li>
+                            <li><Link href="/galerie" className="text-white/70 hover:text-white hover:translate-x-1 transition-all inline-block">Galerie</Link></li>
+                            <li><Link href="/reservation" className="text-white/70 hover:text-white hover:translate-x-1 transition-all inline-block">Réserver</Link></li>
                         </ul>
                     </div>
 
-                    {/* Horaires */}
-                    <div className="space-y-4">
-                        <h4 className="font-serif text-lg font-semibold">Horaires</h4>
-                        <ul className="space-y-2 text-sm">
-                            <li className="flex items-center gap-3">
-                                <Clock className="w-5 h-5 text-accent shrink-0" />
-                                <div className="text-primary-foreground/70">
-                                    <p>Lun - Ven: 12h - 14h30</p>
-                                    <p>& 19h - 23h</p>
-                                </div>
-                            </li>
-                            <li className="pl-8 text-primary-foreground/70">
-                                <p>Samedi: 19h - 23h30</p>
-                            </li>
-                            <li className="pl-8 text-primary-foreground/70">
-                                <p>Dimanche: Fermé</p>
-                            </li>
-                        </ul>
+                    {/* Colonne 3 : Contact & Adresse */}
+                    <div className="space-y-6">
+                        <span className="text-italian-gold text-xs font-bold tracking-[0.2em] uppercase block">
+                            Nous trouver
+                        </span>
+                        <address className="not-italic text-lg text-white/80 leading-relaxed font-light">
+                            42 Rue de la Gastronomie<br />
+                            1000 Bruxelles
+                        </address>
+                        <div className="space-y-1">
+                            <p className="text-white/60 text-sm">Réservations :</p>
+                            <a href="tel:+3221234567" className="block text-xl font-serif hover:text-italian-gold transition-colors">
+                                +32 2 123 45 67
+                            </a>
+                        </div>
                     </div>
 
-                    {/* Navigation */}
-                    <div className="space-y-4">
-                        <h4 className="font-serif text-lg font-semibold">Navigation</h4>
-                        <ul className="space-y-2 text-sm">
-                            {[
-                                { href: "/", label: "Accueil" },
-                                { href: "/menu", label: "Notre Menu" },
-                                { href: "/galerie", label: "Galerie" },
-                                { href: "/reservation", label: "Réservation" },
-                                { href: "/contact", label: "Contact" },
-                            ].map((link) => (
-                                <li key={link.href}>
-                                    <Link
-                                        href={link.href}
-                                        className="text-primary-foreground/70 hover:text-primary-foreground transition-colors"
-                                    >
-                                        {link.label}
-                                    </Link>
-                                </li>
-                            ))}
+                    {/* Colonne 4 : Horaires */}
+                    <div className="space-y-6">
+                        <span className="text-italian-gold text-xs font-bold tracking-[0.2em] uppercase block">
+                            Horaires
+                        </span>
+                        <ul className="space-y-3 text-white/60 text-sm font-light">
+                            <li className="flex justify-between border-b border-white/5 pb-2">
+                                <span>Lun - Ven</span>
+                                <span>12h-14h30 / 19h-23h</span>
+                            </li>
+                            <li className="flex justify-between border-b border-white/5 pb-2">
+                                <span>Samedi</span>
+                                <span>19h-23h30</span>
+                            </li>
+                            <li className="flex justify-between border-b border-white/5 pb-2">
+                                <span>Dimanche</span>
+                                <span className="text-italian-gold">Fermé</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
 
-                {/* Droit d'auteur / Mentions / Politique de confidentialités */}
-                <div className="mt-12 pt-8 border-t border-primary-foreground/10">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/50">
-                        <p>© 2025 La Dolce Vita. Tous droits réservés.</p>
-                        <div className="flex gap-6">
-                            <Link href="/mentions-legales" className="hover:text-primary-foreground transition-colors">
-                                Mentions légales
-                            </Link>
-                            <Link href="/politique-confidentialite" className="hover:text-primary-foreground transition-colors">
-                                Politique de confidentialité
-                            </Link>
+                {/* Section Bas de page : Titre Géant & Copyright */}
+                <div className="flex flex-col items-center justify-center w-full">
+                    <div className="w-full text-center">
+                        <h2 className="font-serif text-[13vw] leading-none text-white/5 font-bold tracking-tight select-none pointer-events-none mb-12 mx-auto">
+                            LA DOLCE VITA
+                        </h2>
+                    </div>
+
+                    <div className="w-full flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-white/30 gap-4 border-t border-white/5 pt-8">
+                        <p>© 2026 La Dolce Vita. Bruxelles.</p>
+                        <div className="flex gap-8">
+                            <Link href="/mentions" className="hover:text-white transition-colors">Mentions</Link>
+                            <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+                            <Link href="/cookies" className="hover:text-white transition-colors">Cookies</Link>
                         </div>
                     </div>
                 </div>
