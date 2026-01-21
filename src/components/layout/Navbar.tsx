@@ -36,17 +36,13 @@ export function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // Détermine si on est sur la page d'accueil (pour l'effet de transparence initiale)
+    // Détermine si on est sur la page d'accueil
     const isHome = pathname === "/";
 
     // Couleurs dynamiques selon l'état
     const textColor = isHome && !isScrolled ? "text-white" : "text-foreground";
     const hoverColor = isHome && !isScrolled ? "hover:text-white/80" : "hover:text-italian-gold";
     const logoColor = isHome && !isScrolled ? "text-white" : "text-foreground";
-    // Bouton : Blanc/Transparent sur Hero --- Noir/Or au scroll
-    const buttonClass = isHome && !isScrolled 
-        ? "border-white/30 text-white hover:bg-white hover:text-black rounded-full" 
-        : "bg-foreground text-background hover:bg-italian-gold hover:text-white border-none rounded-full";
 
     return (
         <nav
