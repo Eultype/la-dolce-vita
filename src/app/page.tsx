@@ -2,6 +2,7 @@
 import HeroSection from "@/components/home/HeroSection";
 import AboutSection from "@/components/home/AboutSection";
 import MenuPreviewSection from "@/components/home/MenuPreviewSection";
+import ReviewsSection from "@/components/home/ReviewsSection";
 
 export default function Home() {
     return (
@@ -9,6 +10,7 @@ export default function Home() {
             <HeroSection />
             <AboutSection />
             <MenuPreviewSection />
+            <ReviewsSection />
 
             {/* Futures sections */}
             <section className="py-20 text-center">

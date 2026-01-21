@@ -1,121 +1,130 @@
 "use client";
 
 // Import React
-import { useRef } from "react";
+import { useState, useEffect } from "react";
 // Import Framer Motion
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 // Import Lucide Icons
-import { Star, Quote } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 // Liste des avis du site
 const reviews = [
     {
         name: "Marie L.",
         rating: 5,
-        text: "Une expérience culinaire exceptionnelle ! Les pâtes fraîches sont à tomber et le service est irréprochable. On se croirait vraiment en Italie.",
-        date: "Décembre 2024",
+        text: "Une expérience culinaire exceptionnelle. Les pâtes fraîches sont à tomber et le service est d'une élégance rare.",
+        date: "Bruxelles",
     },
     {
         name: "Jean-Pierre M.",
         rating: 5,
-        text: "Meilleur restaurant italien de Paris, sans hésitation. La pizza margherita est authentique et le tiramisu est divin. Réservation indispensable !",
-        date: "Novembre 2024",
+        text: "Meilleur restaurant italien de la capitale, sans hésitation. La pizza margherita est un voyage à Naples.",
+        date: "Bruxelles",
     },
     {
         name: "Sophie D.",
         rating: 5,
-        text: "Cadre magnifique, ambiance romantique parfaite. Le chef nous a même préparé un plat spécial pour notre anniversaire. Merci pour ce moment magique.",
-        date: "Octobre 2024",
+        text: "Cadre magnifique, ambiance feutrée parfaite. Le chef nous a offert un moment de pure magie.",
+        date: "Bruxelles",
     },
 ];
 
-// Composant de la section
 const ReviewsSection = () => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const nextReview = () => {
+        setCurrentIndex((prev) => (prev + 1) % reviews.length);
+    };
+
+    const prevReview = () => {
+        setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
+    };
+
+    // Auto-play optionnel
+    useEffect(() => {
+        const timer = setInterval(nextReview, 8000);
+        return () => clearInterval(timer);
+    }, []);
 
     return (
-        <section className="py-24 bg-background" ref={ref}>
-            <div className="container mx-auto px-4">
+        <section className="pb-24 md:pb-32 pt-0 md:pt-12 bg-[#FDFBF7] relative overflow-hidden">
+            <div className="container mx-auto px-4 text-center max-w-4xl">
+                
                 {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
-                >
-                    {/* Titres */}
-                    <p className="text-accent font-medium tracking-[0.2em] uppercase text-sm mb-2">
-                        Témoignages
-                    </p>
-                    <h2 className="section-title">Ce Que Disent Nos Clients</h2>
-                    <div className="flex justify-center mt-4">
-                        <div className="gold-accent" />
-                    </div>
-                </motion.div>
+                <div className="mb-16 flex justify-center items-center gap-4">
+                    <div className="h-px w-8 bg-italian-gold/30"></div>
+                    <span className="text-italian-gold text-[10px] font-bold tracking-[0.4em] uppercase">
+                        PAROLE
+                    </span>
+                    <div className="h-px w-8 bg-italian-gold/30"></div>
+                </div>
 
-                {/* Grille des avis */}
-                <div className="grid md:grid-cols-3 gap-8">
-                    {reviews.map((review, index) => (
+                {/* Slider de citation */}
+                <div className="relative min-h-[300px] flex items-center justify-center">
+                    <AnimatePresence mode="wait">
                         <motion.div
-                            key={review.name}
-                            initial={{ opacity: 0, y: 40 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.6, delay: 0.2 + index * 0.15 }}
-                            className="relative bg-card rounded-lg p-8 shadow-card"
+                            key={currentIndex}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="flex flex-col items-center"
                         >
-                            {/* Icone de citation */}
-                            <div className="absolute -top-4 left-8">
-                                <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                                    <Quote className="w-4 h-4 text-primary-foreground" />
-                                </div>
-                            </div>
-
                             {/* Étoiles */}
-                            <div className="flex gap-1 mb-4">
-                                {[...Array(review.rating)].map((_, i) => (
-                                    <Star
-                                        key={i}
-                                        className="w-5 h-5 fill-accent text-accent"
-                                    />
+                            <div className="flex gap-2 mb-8">
+                                {[...Array(5)].map((_, i) => (
+                                    <Star key={i} className="w-3 h-3 text-italian-gold fill-italian-gold" />
                                 ))}
                             </div>
 
                             {/* Avis */}
-                            <p className="text-muted-foreground leading-relaxed mb-6 italic">
-                                "{review.text}"
-                            </p>
+                            <div className="relative mb-10 px-4 md:px-12">
+                                <Quote className="absolute -top-8 -left-4 w-12 h-12 text-italian-gold/10 fill-current opacity-50" />
+                                <h3 className="font-serif text-3xl md:text-5xl leading-tight text-foreground italic font-light">
+                                    "{reviews[currentIndex].text}"
+                                </h3>
+                                <Quote className="absolute -bottom-8 -right-4 w-12 h-12 text-italian-gold/10 fill-current opacity-50 rotate-180" />
+                            </div>
 
-                            {/* Auteur et date */}
-                            <div className="flex justify-between items-center pt-4 border-t border-border">
-                                <div>
-                                    <p className="font-semibold text-foreground">{review.name}</p>
-                                </div>
-                                <p className="text-sm text-muted-foreground">{review.date}</p>
+                            {/* Auteur */}
+                            <div className="space-y-2">
+                                <p className="text-sm font-bold uppercase tracking-[0.2em] text-foreground">
+                                    {reviews[currentIndex].name}
+                                </p>
+                                <p className="text-[10px] text-muted-foreground uppercase tracking-widest">
+                                    {reviews[currentIndex].date}
+                                </p>
                             </div>
                         </motion.div>
-                    ))}
+                    </AnimatePresence>
+
+                    {/* Contrôles Latéraux */}
+                    <button 
+                        onClick={prevReview}
+                        className="absolute left-0 top-1/2 -translate-y-1/2 p-4 text-italian-gold/30 hover:text-italian-gold transition-colors hidden md:block"
+                    >
+                        <ChevronLeft className="w-8 h-8" />
+                    </button>
+                    <button 
+                        onClick={nextReview}
+                        className="absolute right-0 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 text-italian-gold/30 hover:text-italian-gold transition-colors hidden md:block"
+                    >
+                        <ChevronRight className="w-8 h-8" />
+                    </button>
                 </div>
 
-                {/* Résumé des avis */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.6 }}
-                    className="mt-12 text-center"
-                >
-                    <div className="inline-flex items-center gap-4 bg-card rounded-full px-8 py-4 shadow-soft">
-                        <div className="flex gap-1">
-                            {[...Array(5)].map((_, i) => (
-                                <Star key={i} className="w-6 h-6 fill-accent text-accent" />
-                            ))}
-                        </div>
-                        <span className="text-muted-foreground">
-                            <span className="font-semibold text-foreground">4.9/5</span> basé sur +500 avis
-                        </span>
-                    </div>
-                </motion.div>
+                {/* Indicateurs  */}
+                <div className="flex justify-center gap-3 mt-12">
+                    {reviews.map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => setCurrentIndex(index)}
+                            className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${
+                                index === currentIndex ? "bg-italian-gold w-4" : "bg-italian-gold/20"
+                            }`}
+                        />
+                    ))}
+                </div>
             </div>
         </section>
     );
