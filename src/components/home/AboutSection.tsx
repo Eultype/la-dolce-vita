@@ -48,10 +48,10 @@ const AboutSection = () => {
                             className="relative aspect-[4/5] w-full rounded-t-[15rem] overflow-hidden shadow-2xl border-2 border-italian-gold/50"
                         >
                             <Image
-                                src="/images/restaurant-interior.jpg"
+                                src="/images/table.jpg"
                                 alt="Intérieur La Dolce Vita"
                                 fill
-                                className="object-cover hover:scale-105 transition-transform duration-[2s]"
+                                className="object-cover hover:scale-105 transition-transform duration-[2s] bg-black"
                                 sizes="(max-width: 768px) 100vw, 50vw"
                             />
                         </motion.div>

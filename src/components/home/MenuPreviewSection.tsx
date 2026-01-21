@@ -18,19 +18,19 @@ const dishes = [
         name: "Pizza Margherita",
         description: "L'équilibre parfait : Mozzarella di Bufala, tomates San Marzano et basilic frais de saison.",
         price: "16",
-        image: "/images/pizza-dish.jpg",
+        image: "/images/pizza-marguerita2.jpg",
     },
     {
         name: "Carbonara Romana",
         description: "L'authenticité absolue : Guanciale croustillant, Pecorino Romano DOP et œufs de ferme.",
         price: "18",
-        image: "/images/pasta-dish.jpg",
+        image: "/images/carbonara-romana.jpg",
     },
     {
         name: "Tiramisù Classico",
         description: "La douceur finale : Mascarpone onctueux, café espresso et biscuits Savoiardi.",
-        price: "09",
-        image: "/images/tiramisu-dish.jpg",
+        price: "9",
+        image: "/images/tiramisu.jpg",
     },
 ];
 
@@ -96,9 +96,9 @@ const MenuPreviewSection = () => {
                             transition={{ duration: 1, delay: 0.3 + index * 0.2, ease: [0.16, 1, 0.3, 1] }}
                             className="group flex flex-col cursor-pointer"
                         >
-                            {/* Image dans son cadre blanc (Passe-partout) avec filet d'or */}
-                            <div className="bg-white p-3 shadow-lg rounded-sm mb-6 transition-transform duration-500 group-hover:-translate-y-2 border border-italian-gold/20">
-                                <div className="relative aspect-[4/5] w-full overflow-hidden">
+                            {/* Card Image - Style Galerie Paysage */}
+                            <div className="relative aspect-[4/3] w-full overflow-hidden p-3 bg-white shadow-[0_20px_50px_-20px_rgba(0,0,0,0.1)] transition-transform duration-700 group-hover:-translate-y-2">
+                                <div className="relative w-full h-full overflow-hidden border border-italian-gold/10">
                                     <Image
                                         src={dish.image}
                                         alt={dish.name}
@@ -130,12 +130,12 @@ const MenuPreviewSection = () => {
                     ))}
                 </div>
 
-                {/* LIEN DE NAVIGATION LUXE */}
+                {/* LIEN FINAL LUXE */}
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8, delay: 0.8 }}
-                    className="mt-16 md:mt-20 border-t border-italian-gold/20 pt-8 text-center"
+                    className="mt-12 text-center"
                 >
                     <Button variant="link" className="text-foreground text-lg hover:text-italian-gold transition-colors group p-0" asChild>
                         <Link href="/menu" className="flex items-center gap-2">

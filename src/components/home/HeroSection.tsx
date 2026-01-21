@@ -39,7 +39,7 @@ const HeroSection = () => {
                 className="absolute inset-0 z-0"
             >
                 <Image
-                    src="/images/hero-italian.jpg"
+                    src="/images/scene-restaurant2.jpg"
                     alt="Cuisine italienne authentique"
                     fill
                     className="object-cover opacity-90"
