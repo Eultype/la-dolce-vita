@@ -1,113 +1,112 @@
 "use client";
-// Import Next
-import Image from "next/image";
-// Import Framer Motion
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-// Import React
-import { useRef } from "react";
 
-// Composant section About
+import Image from "next/image";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+
 const AboutSection = () => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const containerRef = useRef(null);
+    const isInView = useInView(containerRef, { once: true, margin: "-10% 0px" });
+    
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"],
+    });
+    
+    const xText = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
 
     return (
-        <section className="py-24 bg-background pattern-italian" ref={ref}>
-            <div className="container mx-auto px-4">
-                <div className="grid lg:grid-cols-2 gap-16 items-center">
-                    {/* Image */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="relative"
-                    >
-                        <div className="relative h-[500px] w-full overflow-hidden rounded-lg shadow-elevated">
+        <section className="py-24 md:py-32 bg-[#FDFBF7] overflow-hidden relative" ref={containerRef}>
+            
+            {/* Background Text "Watermark" */}
+            <div className="absolute top-[15%] -left-[10%] w-[120%] overflow-hidden pointer-events-none opacity-[0.04]">
+                <motion.div style={{ x: xText }} className="whitespace-nowrap">
+                    <h2 className="font-serif text-[18vw] leading-none font-bold text-black tracking-tighter">
+                        CUCINA CUCINA
+                    </h2>
+                </motion.div>
+            </div>
+
+            <div className="container mx-auto px-4 relative z-10">
+                <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                    
+                    {/* Colonne de gauche : Image en arche */}
+                    <div className="lg:col-span-6 relative">
+                        <motion.div
+                            initial={{ clipPath: "inset(100% 0 0 0)" }}
+                            animate={isInView ? { clipPath: "inset(0 0 0 0)" } : {}}
+                            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                            className="relative aspect-[4/5] w-full rounded-t-[15rem] overflow-hidden shadow-2xl"
+                        >
                             <Image
                                 src="/images/restaurant-interior.jpg"
-                                alt="Intérieur du restaurant La Dolce Vita"
+                                alt="Intérieur La Dolce Vita"
                                 fill
-                                className="object-cover"
-                                sizes="(max-width: 1024px) 100vw, 50vw"
+                                className="object-cover hover:scale-105 transition-transform duration-[2s]"
+                                sizes="(max-width: 768px) 100vw, 50vw"
                             />
-                        </div>
-                        {/* Cadre décoratif */}
-                        <div className="absolute -bottom-6 -right-6 w-full h-full border-2 border-accent rounded-lg -z-10" />
-                    </motion.div>
+                        </motion.div>
+                        
+                        {/* Petit détail Gold pour rappeler le Hero */}
+                        <motion.div 
+                            initial={{ scale: 0 }}
+                            animate={isInView ? { scale: 1 } : {}}
+                            transition={{ delay: 0.5, duration: 0.5 }}
+                            className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#FDFBF7] rounded-full flex items-center justify-center hidden md:flex"
+                        >
+                            <div className="w-24 h-24 border border-italian-gold/30 rounded-full flex items-center justify-center p-4 text-center">
+                                <span className="font-serif italic text-italian-gold text-sm leading-tight">Cucina<br/>Autentica</span>
+                            </div>
+                        </motion.div>
+                    </div>
 
-                    {/* Contenu */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                        className="space-y-6"
-                    >
-                        <div>
-                            <p className="text-accent font-medium tracking-[0.2em] uppercase text-sm mb-2">
+                    {/* Colonne de droite : Texte et bouton */}
+                    <div className="lg:col-span-6 space-y-10">
+                        <motion.div 
+                            initial={{ opacity: 0, y: 40 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                        >
+                            {/* Même style de badge que le Hero */}
+                            <span className="inline-block py-1 px-3 border border-italian-gold/30 rounded-full text-italian-gold text-[10px] font-bold tracking-[0.2em] uppercase mb-6">
                                 Notre Histoire
-                            </p>
-                            <h2 className="section-title">
-                                Une tradition familiale depuis 1985
+                            </span>
+                            
+                            {/* Titre */}
+                            <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl text-foreground font-medium leading-[1.1] mb-8">
+                                L'Italie dans <br/>
+                                <span className="text-italian-gold italic font-light">sa plus pure expression.</span>
                             </h2>
-                        </div>
+                            
+                            <p className="text-muted-foreground text-xl leading-relaxed font-light mb-10 max-w-lg">
+                                La Dolce Vita n'est pas un concept, c'est une maison. Une cuisine sincère, héritée de nos grands-mères toscanes, où le produit est roi et le temps suspendu.
+                            </p>
 
-                        <div className="gold-accent" />
+                            {/* Points Clés  */}
+                            <div className="grid grid-cols-2 gap-8 border-t border-italian-gold/20 pt-8">
+                                <div>
+                                    <div className="font-serif text-4xl text-foreground mb-1">100%</div>
+                                    <div className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Fait Maison</div>
+                                </div>
+                                <div>
+                                    <div className="font-serif text-4xl text-foreground mb-1">DOP</div>
+                                    <div className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Produits Certifiés</div>
+                                </div>
+                            </div>
 
-                        <p className="text-muted-foreground text-lg leading-relaxed">
-                            Fondé par la famille Rossi, La Dolce Vita perpétue depuis près de 40 ans
-                            les traditions culinaires de la Toscane. Chaque plat raconte une histoire,
-                            celle de nos ancêtres et de leur passion pour la gastronomie italienne.
-                        </p>
-
-                        {/* Statistiques */}
-                        <div className="grid sm:grid-cols-3 gap-6 pt-6">
-                            {[
-                                { value: "40", label: "Années d'expérience" },
-                                { value: "100%", label: "Produits frais" },
-                                { value: "∞", label: "Passion" },
-                            ].map((stat, index) => (
-                                <motion.div
-                                    key={stat.label}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                                    transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                                    className="text-center p-4 bg-card rounded-lg shadow-soft"
-                                >
-                                    <div className="font-serif text-3xl font-bold text-primary mb-1">
-                                        {stat.value}
-                                    </div>
-                                    <div className="text-sm text-muted-foreground">{stat.label}</div>
-                                </motion.div>
-                            ))}
-                        </div>
-
-                        {/* Valeurs */}
-                        <div className="pt-4 space-y-4">
-                            <h3 className="font-serif text-xl font-semibold text-foreground">
-                                Nos valeurs
-                            </h3>
-                            <ul className="space-y-2">
-                                {[
-                                    "Produits frais importés d'Italie chaque semaine",
-                                    "Recettes traditionnelles transmises de génération en génération",
-                                    "Pâtes et pizzas faites maison quotidiennement",
-                                    "Une ambiance chaleureuse et authentique",
-                                ].map((value, index) => (
-                                    <motion.li
-                                        key={index}
-                                        initial={{ opacity: 0, x: 20 }}
-                                        animate={isInView ? { opacity: 1, x: 0 } : {}}
-                                        transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
-                                        className="flex items-center gap-3 text-muted-foreground"
-                                    >
-                                        <span className="w-2 h-2 rounded-full bg-accent shrink-0" />
-                                        {value}
-                                    </motion.li>
-                                ))}
-                            </ul>
-                        </div>
-                    </motion.div>
+                            <div className="pt-8">
+                                <Button variant="link" className="p-0 text-foreground text-lg hover:text-italian-gold transition-colors group" asChild>
+                                    <Link href="/about" className="flex items-center gap-2">
+                                        Notre Philosophie 
+                                        <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2 text-italian-gold" />
+                                    </Link>
+                                </Button>
+                            </div>
+                        </motion.div>
+                    </div>
                 </div>
             </div>
         </section>
