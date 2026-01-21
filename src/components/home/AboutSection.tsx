@@ -99,7 +99,7 @@ const AboutSection = () => {
                                     <div className="font-serif text-2xl text-foreground mb-1">Pasta Fresca</div>
                                     <div className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Façonnées main sur place</div>
                                 </div>
-                                <div>
+                                <div className="md:text-right">
                                     <div className="font-serif text-2xl text-foreground mb-1">Produits D.O.P.</div>
                                     <div className="text-xs uppercase tracking-wider text-muted-foreground font-medium">L'excellence importée</div>
                                 </div>
@@ -107,7 +107,7 @@ const AboutSection = () => {
                                     <div className="font-serif text-2xl text-foreground mb-1">Enoteca</div>
                                     <div className="text-xs uppercase tracking-wider text-muted-foreground font-medium">+200 Vins Italiens</div>
                                 </div>
-                                <div>
+                                <div className="md:text-right">
                                     <div className="font-serif text-2xl text-foreground mb-1">Tradizione</div>
                                     <div className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Recettes ancestrales</div>
                                 </div>

@@ -10,7 +10,7 @@ export function Footer() {
     return (
         <footer className="bg-[#1a1512] text-[#f0ebe0] pt-24 pb-12 overflow-hidden relative">
             <div className="container mx-auto px-6 relative z-10">
-                {/* GRILLE PRINCIPALE - 4 COLONNES EQUILIBRÉES */}
+                {/* Grille principale - 4 colonnes */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-24 border-b border-white/10 pb-16">
                     
                     {/* Colonne 1 : Marque & Réseaux */}

@@ -61,7 +61,7 @@ const HeroSection = () => {
                     {/* Badge "Signature" */}
                     <motion.div
                         variants={titleVariant}
-                        className="mb-6 md:mb-10"
+                        className="mb-4 md:mb-6"
                     >
                         <span className="inline-block py-1 px-3 border border-italian-gold/50 rounded-full text-italian-gold text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase backdrop-blur-sm">
                             Since 1985
@@ -69,17 +69,17 @@ const HeroSection = () => {
                     </motion.div>
 
                     {/* Titre principal */}
-                    <h1 className="flex flex-col items-center justify-center overflow-hidden leading-[0.9]">
+                    <h1 className="flex flex-col items-center justify-center overflow-hidden leading-[0.85]">
                         <motion.span
                             variants={titleVariant}
-                            className="font-serif text-6xl md:text-8xl lg:text-[11rem] font-medium text-[#f0ebe0] tracking-tight"
+                            className="font-serif text-6xl md:text-8xl lg:text-[9rem] font-medium text-[#f0ebe0] tracking-tight"
                         >
                             LA DOLCE
                         </motion.span>
                         <motion.span
                             variants={titleVariant}
                             transition={{ delay: 0.1 }}
-                            className="font-serif text-6xl md:text-8xl lg:text-[11rem] font-light text-italian-gold italic relative z-10"
+                            className="font-serif text-6xl md:text-8xl lg:text-[9rem] font-light text-italian-gold italic relative z-10 mr-[0.20em]"
                         >
                             VITA
                         </motion.span>
@@ -89,7 +89,7 @@ const HeroSection = () => {
                     <motion.p
                         variants={titleVariant}
                         transition={{ delay: 0.2 }}
-                        className="mt-8 md:mt-12 text-lg md:text-xl text-white/80 font-light max-w-lg mx-auto leading-relaxed"
+                        className="mt-4 md:mt-6 text-lg md:text-xl text-white/80 font-light max-w-lg mx-auto leading-relaxed"
                     >
                         L'art de vivre à l'italienne. <br/>
                         Une cuisine de cœur, d'histoire et de passion.
@@ -99,7 +99,7 @@ const HeroSection = () => {
                     <motion.div
                         variants={titleVariant}
                         transition={{ delay: 0.4 }}
-                        className="mt-12 flex flex-col sm:flex-row gap-6 items-center"
+                        className="mt-6 md:mt-8 flex flex-col sm:flex-row gap-6 items-center"
                     >
                         {/* Bouton Principal : Blanc (contraste fort sur fond sombre) -> Gold au hover */}
                         <Button variant="hero" size="xl" className="rounded-full px-10 h-14 md:h-16 text-base md:text-lg min-w-[180px] bg-white text-black hover:bg-italian-gold hover:text-white border-none transition-all duration-500" asChild>
@@ -114,14 +114,27 @@ const HeroSection = () => {
                 </motion.div>
             </div>
 
-            {/* Indicateur de scroll */}
+            {/* Indicateur de scroll minimaliste */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 1 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
+                transition={{ delay: 1.5, duration: 1 }}
+                className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-4"
             >
-                <div className="w-[1px] h-16 bg-gradient-to-b from-transparent via-italian-gold to-transparent opacity-60"></div>
+                <span className="text-[9px] uppercase tracking-[0.6em] text-italian-gold/50 font-medium">Scroll</span>
+                <div className="w-[1px] h-12 overflow-hidden">
+                    <motion.div 
+                        animate={{ 
+                            y: ["-100%", "100%"] 
+                        }}
+                        transition={{ 
+                            duration: 2.5, 
+                            repeat: Infinity, 
+                            ease: "easeInOut" 
+                        }}
+                        className="w-full h-full bg-gradient-to-b from-transparent via-italian-gold/60 to-transparent"
+                    />
+                </div>
             </motion.div>
         </section>
     );

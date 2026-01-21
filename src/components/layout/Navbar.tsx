@@ -21,7 +21,7 @@ const navLinks = [
     { href: "/contact", label: "Contact" },
 ];
 
-// Composant Navbar
+// Composant de la Navbar
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
