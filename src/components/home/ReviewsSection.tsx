@@ -1,9 +1,9 @@
 "use client";
 
 // Import React
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 // Import Framer Motion
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform, useInView } from "framer-motion";
 // Import Lucide Icons
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
@@ -29,8 +29,19 @@ const reviews = [
     },
 ];
 
+// Composant de la section
 const ReviewsSection = () => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "-100px" });
     const [currentIndex, setCurrentIndex] = useState(0);
+
+    // Parallax pour le texte de fond "EMOZIONE"
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"],
+    });
+    
+    const xText = useTransform(scrollYProgress, [0, 1], ["5%", "-5%"]);
 
     const nextReview = () => {
         setCurrentIndex((prev) => (prev + 1) % reviews.length);
@@ -40,15 +51,25 @@ const ReviewsSection = () => {
         setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
     };
 
-    // Auto-play optionnel
+    // Auto-play optionnel (lent)
     useEffect(() => {
         const timer = setInterval(nextReview, 8000);
         return () => clearInterval(timer);
     }, []);
 
     return (
-        <section className="pb-24 md:pb-32 pt-0 md:pt-12 bg-[#FDFBF7] relative overflow-hidden">
-            <div className="container mx-auto px-4 text-center max-w-4xl">
+        <section className="pb-24 md:pb-32 pt-0 md:pt-12 bg-[#FDFBF7] relative overflow-hidden" ref={ref}>
+            
+            {/* Texte de fond "EMOZIONE" */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none">
+                <motion.div style={{ x: xText }} className="whitespace-nowrap text-center">
+                    <h2 className="font-serif text-[20vw] leading-none font-bold text-black tracking-tighter">
+                        EMOZIONE
+                    </h2>
+                </motion.div>
+            </div>
+
+            <div className="container mx-auto px-4 text-center max-w-4xl relative z-10">
                 
                 {/* Header */}
                 <div className="mb-16 flex justify-center items-center gap-4">
