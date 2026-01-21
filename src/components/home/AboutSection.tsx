@@ -40,12 +40,12 @@ const AboutSection = () => {
                 <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
                     
                     {/* Colonne de gauche : Image en arche */}
-                    <div className="lg:col-span-6 relative">
+                    <div className="lg:col-span-6 relative p-4">
                         <motion.div
                             initial={{ clipPath: "inset(100% 0 0 0)" }}
                             animate={isInView ? { clipPath: "inset(0 0 0 0)" } : {}}
                             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                            className="relative aspect-[4/5] w-full rounded-t-[15rem] overflow-hidden shadow-2xl"
+                            className="relative aspect-[4/5] w-full rounded-t-[15rem] overflow-hidden shadow-2xl border-2 border-italian-gold/50"
                         >
                             <Image
                                 src="/images/restaurant-interior.jpg"
@@ -76,10 +76,13 @@ const AboutSection = () => {
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
                             transition={{ duration: 0.8, delay: 0.2 }}
                         >
-                            {/* Badge */}
-                            <span className="inline-block py-1 px-3 border border-italian-gold/30 rounded-full text-italian-gold text-[10px] font-bold tracking-[0.2em] uppercase mb-6">
-                                Notre Histoire
-                            </span>
+                            {/* Signature Histoire - Style Ligne Fine */}
+                            <div className="flex items-center gap-4 mb-6">
+                                <span className="text-italian-gold text-[10px] font-bold tracking-[0.3em] uppercase">
+                                    Notre Histoire
+                                </span>
+                                <div className="h-px w-12 bg-italian-gold/30"></div>
+                            </div>
                             
                             {/* Titre */}
                             <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl text-foreground font-medium leading-[1.1] mb-8">

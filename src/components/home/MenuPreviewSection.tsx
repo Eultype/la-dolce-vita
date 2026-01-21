@@ -1,111 +1,128 @@
 "use client";
 
-// Import Next
+// Imports Next
 import Link from "next/link";
 import Image from "next/image";
-// Import de React
+// Imports React
 import { useRef } from "react";
-// Import de Framer Motion
-import { motion, useInView } from "framer-motion";
-// Import de Lucide Icons
+// Imports Framer Motion
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
+// Imports Lucide
 import { ArrowRight } from "lucide-react";
-// Import des composants
+// Imports UI
 import { Button } from "@/components/ui/button";
 
-// Liste des exemples de plats à la carte
+// Liste des plats signature
 const dishes = [
     {
         name: "Pizza Margherita",
-        description: "Mozzarella di Bufala, tomates San Marzano, basilic frais",
-        price: "16€",
+        description: "L'équilibre parfait : Mozzarella di Bufala, tomates San Marzano et basilic frais de saison.",
+        price: "16",
         image: "/images/pizza-dish.jpg",
-        category: "Pizzas",
     },
     {
         name: "Carbonara Romana",
-        description: "Guanciale, pecorino romano, œuf, poivre noir",
-        price: "18€",
+        description: "L'authenticité absolue : Guanciale croustillant, Pecorino Romano DOP et œufs de ferme.",
+        price: "18",
         image: "/images/pasta-dish.jpg",
-        category: "Pâtes",
     },
     {
         name: "Tiramisù Classico",
-        description: "Mascarpone, café espresso, biscuits Savoiardi, cacao",
-        price: "9€",
+        description: "La douceur finale : Mascarpone onctueux, café espresso et biscuits Savoiardi.",
+        price: "09",
         image: "/images/tiramisu-dish.jpg",
-        category: "Desserts",
     },
 ];
 
-// Composant de l'aperçu du menu
 const MenuPreviewSection = () => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const containerRef = useRef(null);
+    const isInView = useInView(containerRef, { once: true, margin: "-10% 0px" });
+    
+    // Parallax pour le texte de fond "LA CARTA"
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"],
+    });
+    
+    // Inversion du sens par rapport à la section précédente pour le rythme
+    const xText = useTransform(scrollYProgress, [0, 1], ["-5%", "10%"]);
 
     return (
-        <section className="py-24 md:py-32 bg-background relative overflow-hidden" ref={ref}>
-            {/* Décoration de fond subtile */}
-            <div className="absolute top-0 right-0 w-1/3 h-full bg-italian-gold/5 -skew-x-12 translate-x-1/2 pointer-events-none" />
+        <section className="pb-24 md:pb-40 pt-0 md:pt-12 bg-[#FDFBF7] overflow-hidden relative" ref={containerRef}>
             
-            <div className="container mx-auto px-4 relative z-10">
-                {/* En-tête */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="text-center mb-20"
-                >
-                    <span className="text-italian-gold font-bold tracking-[0.3em] uppercase text-xs mb-4 block">
-                        Gastronomia
-                    </span>
-                    <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                        Le Meilleur de l'Italie
+            {/* BACKGROUND WATERMARK */}
+            <div className="absolute top-[10%] left-0 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none">
+                <motion.div style={{ x: xText }} className="whitespace-nowrap">
+                    <h2 className="font-serif text-[22vw] leading-none font-bold text-black tracking-tighter">
+                        LA CARTA LA CARTA
                     </h2>
-                    <div className="flex justify-center mb-8">
-                        <div className="w-24 h-px bg-italian-gold/30" />
-                    </div>
-                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-light leading-relaxed">
-                        Une sélection rigoureuse de nos plats signature, préparés avec des produits 
-                        d'excellence importés et beaucoup d'amour.
-                    </p>
                 </motion.div>
+            </div>
 
-                {/* Grille des plats */}
-                <div className="grid md:grid-cols-3 gap-10 lg:gap-12 mb-16">
+            <div className="container mx-auto px-4 relative z-10">
+                
+                {/* EN-TÊTE HARMONISÉ */}
+                <div className="max-w-4xl mb-16 md:mb-20">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <div className="flex items-center gap-4 mb-6">
+                            <div className="h-px w-12 bg-italian-gold/40"></div>
+                            <span className="text-italian-gold text-[10px] font-bold tracking-[0.5em] uppercase">
+                                La Selezione
+                            </span>
+                        </div>
+                        
+                        <h2 className="font-serif text-5xl md:text-7xl text-foreground font-medium leading-[1.1] mb-6">
+                            Le goût du <br/>
+                            <span className="text-italian-gold italic font-light">partage authentique.</span>
+                        </h2>
+                        
+                        <p className="text-muted-foreground text-xl leading-relaxed font-light max-w-2xl">
+                            Une cuisine de cœur qui rassemble les générations autour de saveurs vraies et de produits d'exception.
+                        </p>
+                    </motion.div>
+                </div>
+
+                {/* GRILLE DE PLATS "CADRE D'ART" */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
                     {dishes.map((dish, index) => (
                         <motion.div
                             key={dish.name}
-                            initial={{ opacity: 0, y: 40 }}
+                            initial={{ opacity: 0, y: 50 }}
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.8, delay: 0.2 + index * 0.15, ease: "easeOut" }}
-                            className="group bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-500"
+                            transition={{ duration: 1, delay: 0.3 + index * 0.2, ease: [0.16, 1, 0.3, 1] }}
+                            className="group flex flex-col cursor-pointer"
                         >
-                            <div className="relative h-72 w-full overflow-hidden">
-                                <Image
-                                    src={dish.image}
-                                    alt={dish.name}
-                                    fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                    sizes="(max-width: 768px) 100vw, 33vw"
-                                />
-                                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
-                                <div className="absolute top-6 left-6">
-                                    <span className="bg-white/90 backdrop-blur-md text-foreground px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-sm">
-                                        {dish.category}
-                                    </span>
+                            {/* Image dans son cadre blanc (Passe-partout) avec filet d'or */}
+                            <div className="bg-white p-3 shadow-lg rounded-sm mb-6 transition-transform duration-500 group-hover:-translate-y-2 border border-italian-gold/20">
+                                <div className="relative aspect-[4/5] w-full overflow-hidden">
+                                    <Image
+                                        src={dish.image}
+                                        alt={dish.name}
+                                        fill
+                                        className="object-cover transition-transform duration-[1.5s] group-hover:scale-110"
+                                        sizes="(max-width: 768px) 100vw, 33vw"
+                                    />
+                                    <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500" />
                                 </div>
                             </div>
                             
-                            <div className="p-8">
-                                <div className="flex justify-between items-baseline mb-4">
-                                    <h3 className="font-serif text-2xl font-bold text-foreground group-hover:text-italian-gold transition-colors duration-300">
+                            {/* Détails avec Hover Interactif */}
+                            <div className="space-y-3 px-2">
+                                <div className="flex justify-between items-baseline border-b border-italian-gold/10 pb-3 transition-colors duration-500 group-hover:border-italian-gold/40 relative">
+                                    <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground transition-colors duration-300 group-hover:text-italian-gold">
                                         {dish.name}
                                     </h3>
-                                    <span className="text-italian-gold font-serif text-xl italic">
-                                        {dish.price}
+                                    <span className="text-italian-gold font-serif text-xl md:text-2xl italic">
+                                        {dish.price}€
                                     </span>
+                                    {/* Ligne qui s'anime au survol */}
+                                    <div className="absolute bottom-0 left-0 w-0 h-px bg-italian-gold transition-all duration-700 group-hover:w-full" />
                                 </div>
-                                <p className="text-muted-foreground text-sm leading-relaxed font-light">
+                                <p className="text-muted-foreground text-sm font-light leading-relaxed">
                                     {dish.description}
                                 </p>
                             </div>
@@ -113,17 +130,17 @@ const MenuPreviewSection = () => {
                     ))}
                 </div>
 
-                {/* Appel à l'action */}
-                <motion.div
+                {/* LIEN DE NAVIGATION LUXE */}
+                <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.8 }}
-                    className="text-center"
+                    transition={{ duration: 0.8, delay: 0.8 }}
+                    className="mt-16 md:mt-20 border-t border-italian-gold/20 pt-8 text-center"
                 >
-                    <Button variant="outline" size="xl" className="rounded-full px-12 border-italian-gold/30 text-foreground hover:bg-italian-gold hover:text-white transition-all duration-300" asChild>
-                        <Link href="/menu" className="flex items-center gap-3">
-                            Découvrir toute la carte
-                            <ArrowRight className="w-5 h-5" />
+                    <Button variant="link" className="text-foreground text-lg hover:text-italian-gold transition-colors group p-0" asChild>
+                        <Link href="/menu" className="flex items-center gap-2">
+                            Découvrir toute notre carte 
+                            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2 text-italian-gold" />
                         </Link>
                     </Button>
                 </motion.div>

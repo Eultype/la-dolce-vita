@@ -58,13 +58,20 @@ const HeroSection = () => {
                     animate="visible"
                     className="max-w-6xl mx-auto flex flex-col items-center"
                 >
-                    {/* Badge "Signature" */}
+                    {/* Signature "Depuis 1985" - Style Ligne Fine */}
                     <motion.div
                         variants={titleVariant}
-                        className="mb-4 md:mb-6"
+                        className="mb-6 md:mb-8 flex flex-col items-center gap-3"
                     >
-                        <span className="inline-block py-1 px-3 border border-italian-gold/50 rounded-full text-italian-gold text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase backdrop-blur-sm">
-                            Since 1985
+                        <div className="flex items-center gap-4">
+                            <div className="h-px w-8 md:w-12 bg-italian-gold/40"></div>
+                            <span className="text-italian-gold text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase">
+                                Since 1985
+                            </span>
+                            <div className="h-px w-8 md:w-12 bg-italian-gold/40"></div>
+                        </div>
+                        <span className="text-white/60 text-[9px] md:text-[10px] uppercase tracking-[0.6em] font-light">
+                            Ristorante • Pizzeria
                         </span>
                     </motion.div>
 
