@@ -76,7 +76,7 @@ const AboutSection = () => {
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
                             transition={{ duration: 0.8, delay: 0.2 }}
                         >
-                            {/* Même style de badge que le Hero */}
+                            {/* Badge */}
                             <span className="inline-block py-1 px-3 border border-italian-gold/30 rounded-full text-italian-gold text-[10px] font-bold tracking-[0.2em] uppercase mb-6">
                                 Notre Histoire
                             </span>
@@ -88,18 +88,28 @@ const AboutSection = () => {
                             </h2>
                             
                             <p className="text-muted-foreground text-xl leading-relaxed font-light mb-10 max-w-lg">
-                                La Dolce Vita n'est pas un concept, c'est une maison. Une cuisine sincère, héritée de nos grands-mères toscanes, où le produit est roi et le temps suspendu.
+                                Plus qu'un restaurant, une invitation au voyage. De la farine de nos pâtes fraîches aux
+                                vins rares de notre cave, chaque détail célèbre l'excellence italienne. Ici, nous ne
+                                servons pas simplement des plats, nous créons des souvenirs.
                             </p>
 
-                            {/* Points Clés  */}
-                            <div className="grid grid-cols-2 gap-8 border-t border-italian-gold/20 pt-8">
+                            {/* Points Clés - Grille de 4 pour plus d'impact */}
+                            <div className="grid grid-cols-2 gap-x-8 gap-y-10 border-t border-italian-gold/20 pt-8">
                                 <div>
-                                    <div className="font-serif text-4xl text-foreground mb-1">100%</div>
-                                    <div className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Fait Maison</div>
+                                    <div className="font-serif text-2xl text-foreground mb-1">Pasta Fresca</div>
+                                    <div className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Façonnées main sur place</div>
                                 </div>
                                 <div>
-                                    <div className="font-serif text-4xl text-foreground mb-1">DOP</div>
-                                    <div className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Produits Certifiés</div>
+                                    <div className="font-serif text-2xl text-foreground mb-1">Produits D.O.P.</div>
+                                    <div className="text-xs uppercase tracking-wider text-muted-foreground font-medium">L'excellence importée</div>
+                                </div>
+                                <div>
+                                    <div className="font-serif text-2xl text-foreground mb-1">Enoteca</div>
+                                    <div className="text-xs uppercase tracking-wider text-muted-foreground font-medium">+200 Vins Italiens</div>
+                                </div>
+                                <div>
+                                    <div className="font-serif text-2xl text-foreground mb-1">Tradizione</div>
+                                    <div className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Recettes ancestrales</div>
                                 </div>
                             </div>
 
