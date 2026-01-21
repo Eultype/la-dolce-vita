@@ -1,12 +1,18 @@
 "use client";
 
+// Import Next
 import Image from "next/image";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { useRef } from "react";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
+// Import de React
+import { useRef } from "react";
+// Import de Framer Motion
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
+// Import de Lucide Icons
 import { ArrowRight } from "lucide-react";
+// Import des composants
+import { Button } from "@/components/ui/button";
 
+// Composant de la section "A propos"
 const AboutSection = () => {
     const containerRef = useRef(null);
     const isInView = useInView(containerRef, { once: true, margin: "-10% 0px" });

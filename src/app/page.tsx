@@ -1,9 +1,12 @@
+// Import des composants de la page d'accueil
 import HeroSection from "@/components/home/HeroSection";
+import AboutSection from "@/components/home/AboutSection";
 
 export default function Home() {
     return (
         <div className="flex flex-col min-h-screen">
             <HeroSection />
+            <AboutSection />
 
             {/* Futures sections */}
             <section className="py-20 text-center">

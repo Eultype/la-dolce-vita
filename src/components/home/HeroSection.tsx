@@ -1,11 +1,16 @@
 "use client";
 
+// Import Next
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { motion, useScroll, useTransform } from "framer-motion";
+// Import de React
 import { useRef } from "react";
+// Import de Framer Motion
+import { motion, useScroll, useTransform } from "framer-motion";
+// Import des composants
+import { Button } from "@/components/ui/button";
 
+// Composant de la section Hero
 const HeroSection = () => {
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -20,17 +25,16 @@ const HeroSection = () => {
     // Variantes d'animation cohérentes
     const titleVariant = {
         hidden: { y: 100, opacity: 0 },
-        visible: { 
-            y: 0, 
-            opacity: 1, 
-            transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } 
-        }
-    };
-
+        visible: {
+            y: 0,
+            opacity: 1,
+                        transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as const } 
+                    }
+                };
     return (
         <section ref={ref} className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden bg-[#1a1512]">
             {/* Background */}
-            <motion.div 
+            <motion.div
                 style={{ y, opacity }}
                 className="absolute inset-0 z-0"
             >
@@ -49,7 +53,7 @@ const HeroSection = () => {
 
             {/* Contenu */}
             <div className="relative z-20 container mx-auto px-4 text-center">
-                <motion.div 
+                <motion.div
                     initial="hidden"
                     animate="visible"
                     className="max-w-6xl mx-auto flex flex-col items-center"
@@ -66,13 +70,13 @@ const HeroSection = () => {
 
                     {/* Titre principal */}
                     <h1 className="flex flex-col items-center justify-center overflow-hidden leading-[0.9]">
-                        <motion.span 
+                        <motion.span
                             variants={titleVariant}
                             className="font-serif text-6xl md:text-8xl lg:text-[11rem] font-medium text-[#f0ebe0] tracking-tight"
                         >
                             LA DOLCE
                         </motion.span>
-                        <motion.span 
+                        <motion.span
                             variants={titleVariant}
                             transition={{ delay: 0.1 }}
                             className="font-serif text-6xl md:text-8xl lg:text-[11rem] font-light text-italian-gold italic relative z-10"
@@ -91,16 +95,19 @@ const HeroSection = () => {
                         Une cuisine de cœur, d'histoire et de passion.
                     </motion.p>
 
-                    {/* Boutons */}
+                    {/* Boutons d'action Luxe */}
                     <motion.div
                         variants={titleVariant}
                         transition={{ delay: 0.4 }}
                         className="mt-12 flex flex-col sm:flex-row gap-6 items-center"
                     >
-                        <Button variant="hero" size="xl" className="rounded-full px-10 h-14 md:h-16 text-base md:text-lg min-w-[180px]" asChild>
+                        {/* Bouton Principal : Blanc (contraste fort sur fond sombre) -> Gold au hover */}
+                        <Button variant="hero" size="xl" className="rounded-full px-10 h-14 md:h-16 text-base md:text-lg min-w-[180px] bg-white text-black hover:bg-italian-gold hover:text-white border-none transition-all duration-500" asChild>
                             <Link href="/menu">Découvrir la Carte</Link>
                         </Button>
-                        <Button variant="outline" size="xl" className="rounded-full px-10 h-14 md:h-16 text-base md:text-lg min-w-[180px] border-white/20 text-white hover:bg-white hover:text-black hover:border-white transition-colors" asChild>
+                        
+                        {/* Bouton Secondaire : Outline Fin */}
+                        <Button variant="outline" size="xl" className="rounded-full px-10 h-14 md:h-16 text-base md:text-lg min-w-[180px] border-white/30 text-white bg-transparent hover:bg-white hover:text-black hover:border-white transition-all duration-500" asChild>
                             <Link href="/reservation">Réserver</Link>
                         </Button>
                     </motion.div>

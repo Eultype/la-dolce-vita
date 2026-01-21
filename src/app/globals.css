@@ -41,11 +41,11 @@
     --color-italian-green: hsl(var(--italian-green));
     --color-italian-cream: hsl(var(--italian-cream));
     --color-italian-gold: hsl(var(--italian-gold));
-    --color-italian-brown: hsl(var(--italian-brown));
-    --color-italian-terracotta: hsl(var(--italian-terracotta));
-
-    /* --- Sidebar --- */
-    --color-sidebar: hsl(var(--sidebar-background));
+      --color-italian-brown: hsl(var(--italian-brown));
+      --color-italian-terracotta: hsl(var(--italian-terracotta));
+      --color-italian-olive: hsl(var(--italian-olive));
+    
+      /* --- Sidebar --- */    --color-sidebar: hsl(var(--sidebar-background));
     --color-sidebar-foreground: hsl(var(--sidebar-foreground));
     --color-sidebar-primary: hsl(var(--sidebar-primary));
     --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
@@ -118,6 +118,7 @@
         --italian-gold: 38 70% 50%;
         --italian-brown: 25 30% 25%;
         --italian-terracotta: 15 55% 55%;
+        --italian-olive: 85 45% 55%; /* Vert Olive Lumineux */
 
         /* Shadows Variables */
         --shadow-soft: 0 4px 20px -4px hsla(25, 25%, 15%, 0.1);
@@ -297,19 +298,31 @@
         @apply w-full;
     }
 
-    /* Hero Overlay */
-    .hero-overlay {
-        background: var(--gradient-hero);
-    }
+  /* Hero Overlay */
+  .hero-overlay {
+    background: var(--gradient-hero);
+  }
 
-    /* Gold Accent Line */
-    .gold-accent {
-        @apply w-16 h-1 rounded-full;
-        background: var(--gradient-gold);
-    }
+  /* Gold Accent Line */
+  .gold-accent {
+    @apply w-16 h-1 rounded-full;
+    background: var(--gradient-gold);
+  }
 
-    /* Italian Pattern Background */
-    .pattern-italian {
-        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L30 60M0 30L60 30' stroke='%23d4a574' stroke-opacity='0.05' stroke-width='1'/%3E%3C/svg%3E");
-    }
+  /* Texture Grain Subtil (Luxe/Papier) */
+  .bg-noise {
+    position: relative;
+    isolation: isolate;
+  }
+  .bg-noise::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
 }
+
