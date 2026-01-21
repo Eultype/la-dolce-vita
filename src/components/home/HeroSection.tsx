@@ -1,92 +1,107 @@
 "use client";
 
-// Import Next
 import Link from "next/link";
 import Image from "next/image";
-// Import composants
 import { Button } from "@/components/ui/button";
-// Import Framer Motion
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
-// Composant section Hero
 const HeroSection = () => {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start start", "end start"],
+    });
+
+    // Parallax fluide
+    const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+    const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+    // Variantes d'animation cohérentes
+    const titleVariant = {
+        hidden: { y: 100, opacity: 0 },
+        visible: { 
+            y: 0, 
+            opacity: 1, 
+            transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } 
+        }
+    };
+
     return (
-        <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
+        <section ref={ref} className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden bg-[#1a1512]">
             {/* Background */}
-            <div className="absolute inset-0 z-0">
+            <motion.div 
+                style={{ y, opacity }}
+                className="absolute inset-0 z-0"
+            >
                 <Image
                     src="/images/hero-italian.jpg"
                     alt="Cuisine italienne authentique"
                     fill
-                    className="object-cover"
+                    className="object-cover opacity-90"
                     priority
                     sizes="100vw"
-                    quality={90}
+                    quality={100}
                 />
-                {/* Overlay */}
-                <div className="absolute inset-0 hero-overlay z-10" />
-            </div>
+                {/* Overlay chaud */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-[#1a1512]/90 z-10" />
+            </motion.div>
 
             {/* Contenu */}
-            <div className="relative z-10 container mx-auto px-4 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="max-w-3xl mx-auto"
+            <div className="relative z-20 container mx-auto px-4 text-center">
+                <motion.div 
+                    initial="hidden"
+                    animate="visible"
+                    className="max-w-6xl mx-auto flex flex-col items-center"
                 >
-                    {/* Décoration */}
+                    {/* Badge "Signature" */}
                     <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 0.3, duration: 0.5 }}
-                        className="flex justify-center mb-6"
+                        variants={titleVariant}
+                        className="mb-6 md:mb-10"
                     >
-                        <div className="gold-accent" />
+                        <span className="inline-block py-1 px-3 border border-italian-gold/50 rounded-full text-italian-gold text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase backdrop-blur-sm">
+                            Since 1985
+                        </span>
                     </motion.div>
 
-                    {/* Sous-titre */}
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.4, duration: 0.6 }}
-                        className="text-accent font-medium tracking-[0.3em] uppercase text-sm mb-4"
-                    >
-                        Ristorante Italiano
-                    </motion.p>
+                    {/* Titre principal */}
+                    <h1 className="flex flex-col items-center justify-center overflow-hidden leading-[0.9]">
+                        <motion.span 
+                            variants={titleVariant}
+                            className="font-serif text-6xl md:text-8xl lg:text-[11rem] font-medium text-[#f0ebe0] tracking-tight"
+                        >
+                            LA DOLCE
+                        </motion.span>
+                        <motion.span 
+                            variants={titleVariant}
+                            transition={{ delay: 0.1 }}
+                            className="font-serif text-6xl md:text-8xl lg:text-[11rem] font-light text-italian-gold italic relative z-10"
+                        >
+                            VITA
+                        </motion.span>
+                    </h1>
 
-                    {/* Titre */}
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.5, duration: 0.6 }}
-                        className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground mb-6 leading-tight"
-                    >
-                        La Dolce Vita
-                    </motion.h1>
-
-                    {/* Slogan */}
+                    {/* Tagline */}
                     <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.7, duration: 0.6 }}
-                        className="text-xl md:text-2xl text-primary-foreground/90 font-light mb-10 italic font-serif"
+                        variants={titleVariant}
+                        transition={{ delay: 0.2 }}
+                        className="mt-8 md:mt-12 text-lg md:text-xl text-white/80 font-light max-w-lg mx-auto leading-relaxed"
                     >
-                        L'art de la cuisine italienne authentique
+                        L'art de vivre à l'italienne. <br/>
+                        Une cuisine de cœur, d'histoire et de passion.
                     </motion.p>
 
                     {/* Boutons */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.9, duration: 0.6 }}
-                        className="flex flex-col sm:flex-row gap-4 justify-center"
+                        variants={titleVariant}
+                        transition={{ delay: 0.4 }}
+                        className="mt-12 flex flex-col sm:flex-row gap-6 items-center"
                     >
-                        <Button variant="hero" size="xl" asChild>
-                            <Link href="/menu">Découvrir le Menu</Link>
+                        <Button variant="hero" size="xl" className="rounded-full px-10 h-14 md:h-16 text-base md:text-lg min-w-[180px]" asChild>
+                            <Link href="/menu">Découvrir la Carte</Link>
                         </Button>
-                        <Button variant="heroOutline" size="xl" asChild>
-                            <Link href="/reservation">Réserver une Table</Link>
+                        <Button variant="outline" size="xl" className="rounded-full px-10 h-14 md:h-16 text-base md:text-lg min-w-[180px] border-white/20 text-white hover:bg-white hover:text-black hover:border-white transition-colors" asChild>
+                            <Link href="/reservation">Réserver</Link>
                         </Button>
                     </motion.div>
                 </motion.div>
@@ -96,16 +111,10 @@ const HeroSection = () => {
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1.2, duration: 0.6 }}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+                transition={{ delay: 1, duration: 1 }}
+                className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
             >
-                <motion.div
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                    className="w-6 h-10 rounded-full border-2 border-primary-foreground/50 flex justify-center pt-2"
-                >
-                    <div className="w-1.5 h-3 rounded-full bg-primary-foreground/70" />
-                </motion.div>
+                <div className="w-[1px] h-16 bg-gradient-to-b from-transparent via-italian-gold to-transparent opacity-60"></div>
             </motion.div>
         </section>
     );
