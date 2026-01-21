@@ -1,15 +1,15 @@
 "use client";
 
-// Imports Next
+// Import Next
 import Link from "next/link";
 import Image from "next/image";
-// Imports React
+// Import React
 import { useRef } from "react";
-// Imports Framer Motion
+// Import Framer Motion
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-// Imports Lucide
+// Import Lucide Icons
 import { ArrowRight } from "lucide-react";
-// Imports UI
+// Import Composants
 import { Button } from "@/components/ui/button";
 
 // Liste des plats signature
@@ -34,6 +34,7 @@ const dishes = [
     },
 ];
 
+// Composant de la section "Menu Preview"
 const MenuPreviewSection = () => {
     const containerRef = useRef(null);
     const isInView = useInView(containerRef, { once: true, margin: "-10% 0px" });
@@ -50,7 +51,7 @@ const MenuPreviewSection = () => {
     return (
         <section className="pb-24 md:pb-40 pt-0 md:pt-12 bg-[#FDFBF7] overflow-hidden relative" ref={containerRef}>
             
-            {/* BACKGROUND WATERMARK */}
+            {/* Texte de fond "LA CARTA" */}
             <div className="absolute top-[10%] left-0 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none">
                 <motion.div style={{ x: xText }} className="whitespace-nowrap">
                     <h2 className="font-serif text-[22vw] leading-none font-bold text-black tracking-tighter">
@@ -61,7 +62,7 @@ const MenuPreviewSection = () => {
 
             <div className="container mx-auto px-4 relative z-10">
                 
-                {/* EN-TÊTE HARMONISÉ */}
+                {/* Header */}
                 <div className="max-w-4xl mb-16 md:mb-20">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -86,7 +87,7 @@ const MenuPreviewSection = () => {
                     </motion.div>
                 </div>
 
-                {/* GRILLE DE PLATS "CADRE D'ART" */}
+                {/* Grilles de plat */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
                     {dishes.map((dish, index) => (
                         <motion.div
@@ -96,9 +97,9 @@ const MenuPreviewSection = () => {
                             transition={{ duration: 1, delay: 0.3 + index * 0.2, ease: [0.16, 1, 0.3, 1] }}
                             className="group flex flex-col cursor-pointer"
                         >
-                            {/* Card Image - Style Galerie Paysage */}
-                            <div className="relative aspect-[4/3] w-full overflow-hidden p-3 bg-white shadow-[0_20px_50px_-20px_rgba(0,0,0,0.1)] transition-transform duration-700 group-hover:-translate-y-2">
-                                <div className="relative w-full h-full overflow-hidden border border-italian-gold/10">
+                            {/* Images */}
+                            <div className="relative aspect-[4/3] w-full overflow-hidden p-3 border border-italian-gold/10 bg-white shadow-[0_20px_50px_-20px_rgba(0,0,0,0.1)] transition-transform duration-700 group-hover:-translate-y-2">
+                                <div className="relative w-full h-full overflow-hidden">
                                     <Image
                                         src={dish.image}
                                         alt={dish.name}
@@ -110,9 +111,9 @@ const MenuPreviewSection = () => {
                                 </div>
                             </div>
                             
-                            {/* Détails avec Hover Interactif */}
+                            {/* Détails */}
                             <div className="space-y-3 px-2">
-                                <div className="flex justify-between items-baseline border-b border-italian-gold/10 pb-3 transition-colors duration-500 group-hover:border-italian-gold/40 relative">
+                                <div className="flex justify-between items-baseline border-b border-italian-gold/10 py-3 transition-colors duration-500 group-hover:border-italian-gold/40 relative">
                                     <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground transition-colors duration-300 group-hover:text-italian-gold">
                                         {dish.name}
                                     </h3>
@@ -130,7 +131,7 @@ const MenuPreviewSection = () => {
                     ))}
                 </div>
 
-                {/* LIEN FINAL LUXE */}
+                {/* Bouton découvrir la carte */}
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}

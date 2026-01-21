@@ -58,7 +58,7 @@ const HeroSection = () => {
                     animate="visible"
                     className="max-w-6xl mx-auto flex flex-col items-center"
                 >
-                    {/* Signature "Depuis 1985" - Style Ligne Fine */}
+                    {/* Signature "Depuis 1985" */}
                     <motion.div
                         variants={titleVariant}
                         className="mb-6 md:mb-8 flex flex-col items-center gap-3"
@@ -92,7 +92,7 @@ const HeroSection = () => {
                         </motion.span>
                     </h1>
 
-                    {/* Tagline */}
+                    {/* Slogan */}
                     <motion.p
                         variants={titleVariant}
                         transition={{ delay: 0.2 }}
@@ -102,18 +102,18 @@ const HeroSection = () => {
                         Une cuisine de cœur, d'histoire et de passion.
                     </motion.p>
 
-                    {/* Boutons d'action Luxe */}
+                    {/* Boutons d'action*/}
                     <motion.div
                         variants={titleVariant}
                         transition={{ delay: 0.4 }}
                         className="mt-6 md:mt-8 flex flex-col sm:flex-row gap-6 items-center"
                     >
-                        {/* Bouton Principal : Blanc (contraste fort sur fond sombre) -> Gold au hover */}
+                        {/* Bouton Découvrir la carte */}
                         <Button variant="hero" size="xl" className="rounded-full px-10 h-14 md:h-16 text-base md:text-lg min-w-[180px] bg-white text-black hover:bg-italian-gold hover:text-white border-none transition-all duration-500" asChild>
                             <Link href="/menu">Découvrir la Carte</Link>
                         </Button>
                         
-                        {/* Bouton Secondaire : Outline Fin */}
+                        {/* Bouton Réserver */}
                         <Button variant="outline" size="xl" className="rounded-full px-10 h-14 md:h-16 text-base md:text-lg min-w-[180px] border-white/30 text-white bg-transparent hover:bg-white hover:text-black hover:border-white transition-all duration-500" asChild>
                             <Link href="/reservation">Réserver</Link>
                         </Button>
@@ -121,7 +121,7 @@ const HeroSection = () => {
                 </motion.div>
             </div>
 
-            {/* Indicateur de scroll minimaliste */}
+            {/* Indicateur de scroll */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

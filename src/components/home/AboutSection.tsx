@@ -27,7 +27,7 @@ const AboutSection = () => {
     return (
         <section className="py-24 md:py-32 bg-[#FDFBF7] overflow-hidden relative" ref={containerRef}>
             
-            {/* Background Text "Watermark" */}
+            {/* Texte de fond "CUCINA" */}
             <div className="absolute top-[15%] -left-[10%] w-[120%] overflow-hidden pointer-events-none opacity-[0.04]">
                 <motion.div style={{ x: xText }} className="whitespace-nowrap">
                     <h2 className="font-serif text-[18vw] leading-none font-bold text-black tracking-tighter">
@@ -56,7 +56,7 @@ const AboutSection = () => {
                             />
                         </motion.div>
                         
-                        {/* Petit détail Gold pour rappeler le Hero */}
+                        {/* Petit "Badge" Cucina Autentica */}
                         <motion.div 
                             initial={{ scale: 0 }}
                             animate={isInView ? { scale: 1 } : {}}
@@ -89,7 +89,8 @@ const AboutSection = () => {
                                 L'Italie dans <br/>
                                 <span className="text-italian-gold italic font-light">sa plus pure expression.</span>
                             </h2>
-                            
+
+                            {/* Description */}
                             <p className="text-muted-foreground text-xl leading-relaxed font-light mb-10 max-w-lg">
                                 Plus qu'un restaurant, une invitation au voyage. De la farine de nos pâtes fraîches aux
                                 vins rares de notre cave, chaque détail célèbre l'excellence italienne. Ici, nous ne
@@ -116,6 +117,7 @@ const AboutSection = () => {
                                 </div>
                             </div>
 
+                            {/* Bouton notre Philosophie*/}
                             <div className="pt-8">
                                 <Button variant="link" className="p-0 text-foreground text-lg hover:text-italian-gold transition-colors group" asChild>
                                     <Link href="/about" className="flex items-center gap-2">
