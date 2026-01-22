@@ -11,30 +11,10 @@ import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 // Import Composants
 import { Button } from "@/components/ui/button";
+// Import des datas
+import { dishes } from "@/data/menu";
 
-// Liste des plats signature
-const dishes = [
-    {
-        name: "Pizza Margherita",
-        description: "L'équilibre parfait : Mozzarella di Bufala, tomates San Marzano et basilic frais de saison.",
-        price: "16",
-        image: "/images/pizza-marguerita2.jpg",
-    },
-    {
-        name: "Carbonara Romana",
-        description: "L'authenticité absolue : Guanciale croustillant, Pecorino Romano DOP et œufs de ferme.",
-        price: "18",
-        image: "/images/carbonara-romana.jpg",
-    },
-    {
-        name: "Tiramisù Classico",
-        description: "La douceur finale : Mascarpone onctueux, café espresso et biscuits Savoiardi.",
-        price: "9",
-        image: "/images/tiramisu.jpg",
-    },
-];
-
-// Composant de la section "Menu Preview"
+// Composant de la section "Aperçu du menu"
 const MenuPreviewSection = () => {
     const containerRef = useRef(null);
     const isInView = useInView(containerRef, { once: true, margin: "-10% 0px" });
@@ -46,7 +26,7 @@ const MenuPreviewSection = () => {
     });
     
     // Inversion du sens par rapport à la section précédente pour le rythme
-    const xText = useTransform(scrollYProgress, [0, 1], ["-5%", "10%"]);
+    const xText = useTransform(scrollYProgress, [0, 1], ["-3%", "3%"]);
 
     return (
         <section className="pb-24 md:pb-40 pt-0 md:pt-12 bg-[#FDFBF7] overflow-hidden relative" ref={containerRef}>

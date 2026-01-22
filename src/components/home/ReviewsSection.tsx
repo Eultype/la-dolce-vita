@@ -6,28 +6,8 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from "framer-motion";
 // Import Lucide Icons
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
-
-// Liste des avis du site
-const reviews = [
-    {
-        name: "Marie L.",
-        rating: 5,
-        text: "Une expérience culinaire exceptionnelle. Les pâtes fraîches sont à tomber et le service est d'une élégance rare.",
-        date: "Bruxelles",
-    },
-    {
-        name: "Jean-Pierre M.",
-        rating: 5,
-        text: "Meilleur restaurant italien de la capitale, sans hésitation. La pizza margherita est un voyage à Naples.",
-        date: "Bruxelles",
-    },
-    {
-        name: "Sophie D.",
-        rating: 5,
-        text: "Cadre magnifique, ambiance feutrée parfaite. Le chef nous a offert un moment de pure magie.",
-        date: "Bruxelles",
-    },
-];
+// Import des datas
+import { reviews } from "@/data/reviews";
 
 // Composant de la section
 const ReviewsSection = () => {
@@ -70,7 +50,6 @@ const ReviewsSection = () => {
             </div>
 
             <div className="container mx-auto px-4 text-center max-w-4xl relative z-10">
-                
                 {/* Header */}
                 <div className="mb-16 flex justify-center items-center gap-4">
                     <div className="h-px w-8 bg-italian-gold/30"></div>
