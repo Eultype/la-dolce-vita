@@ -47,13 +47,13 @@ export function Footer() {
                         <span className="text-italian-gold text-xs font-bold tracking-[0.2em] uppercase block">
                             Nous trouver
                         </span>
-                        <address className="not-italic text-lg text-white/80 leading-relaxed font-light">
+                        <address className="not-italic text-sm text-white/80 leading-relaxed font-light">
                             42 Rue de la Gastronomie<br />
                             1000 Bruxelles
                         </address>
-                        <div className="space-y-1">
-                            <p className="text-white/60 text-sm">Réservations :</p>
-                            <a href="tel:+3221234567" className="block text-xl font-serif hover:text-italian-gold transition-colors">
+                        <div className="space-y-6">
+                            <span className="text-italian-gold text-xs font-bold tracking-[0.2em] uppercase block">Réservations</span>
+                            <a href="tel:+3221234567" className="block text-sm font-bold hover:text-italian-gold transition-colors">
                                 +32 2 123 45 67
                             </a>
                         </div>
