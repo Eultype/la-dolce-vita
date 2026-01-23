@@ -187,6 +187,48 @@ export default function AboutPage() {
                         </div>
                     </motion.div>
                 </section>
+
+                {/* La Squadra */}
+                <section className="container mx-auto px-4 mb-10">
+                    <div className="max-w-3xl mb-20 text-left">
+                        <span className="text-italian-gold text-[10px] font-bold tracking-[0.3em] uppercase mb-6 flex items-center gap-4">
+                            <span className="h-px w-12 bg-italian-gold/30"></span>
+                            La Squadra
+                        </span>
+                        <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground font-medium mb-6">
+                            Les Gardiens du <span className="italic text-italian-gold font-light">Savoir-faire.</span>
+                        </h2>
+                        <p className="text-muted-foreground text-lg font-light leading-relaxed max-w-2xl border-l-2 border-italian-gold/20 pl-6">
+                            Derrière chaque plat se cache une main experte, un regard attentif et un cœur passionné. Voici ceux qui font vivre l'âme de la maison au quotidien.
+                        </p>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-12">
+                        {teamMembers.map((member, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.2 }}
+                                className="group text-center"
+                            >
+                                {/* L'Arche Équipe avec effet N&B -> Couleur au survol de l'image */}
+                                <div className="relative aspect-[3/4] w-full overflow-hidden mb-6 rounded-t-full shadow-lg border-2 border-italian-gold/30 grayscale hover:grayscale-0 transition-all duration-700 cursor-pointer">
+                                    <Image
+                                        src={member.image}
+                                        alt={member.name}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
+                                <h3 className="font-serif text-2xl text-foreground mb-1">{member.name}</h3>
+                                <p className="text-italian-gold text-xs uppercase tracking-widest mb-3">{member.role}</p>
+                                <p className="text-muted-foreground font-light italic text-sm">"{member.quote}"</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </section>
             </div>
         </div>
     );
