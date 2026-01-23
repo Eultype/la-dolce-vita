@@ -69,7 +69,7 @@ export default function AboutPage() {
                 </section>
 
                 {/* Origines */}
-                <section className="container mx-auto px-4 mb-32 md:mb-48">
+                <section className="container mx-auto px-4 mt-10 mb-32 md:mb-48">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                         {/* Image à Gauche */}
                         <motion.div
@@ -77,7 +77,7 @@ export default function AboutPage() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 1 }}
-                            className="lg:col-span-5 relative px-6"
+                            className="lg:col-span-5 relative"
                         >
                             {/* Photo archive */}
                             <div className="relative aspect-[5/3] w-full overflow-hidden rounded-sm shadow-2xl border border-italian-gold/30 p-2 bg-white">
@@ -129,8 +129,8 @@ export default function AboutPage() {
                     </div>
                 </section>
 
-                {/* 3. L'Héritage (Piliers) */}
-                <section className="container mx-auto px-4 mb-32 md:mb-48">
+                {/*  L'Héritage (Piliers) */}
+                <section className="container mx-auto px-4 mb-10">
                     <div className="text-center mb-20">
                         <div className="flex items-center justify-center gap-4 mb-4">
                             <div className="h-px w-12 bg-italian-gold/30"></div>
@@ -165,7 +165,7 @@ export default function AboutPage() {
                 </section>
 
                 {/* Manifeste */}
-                <section className="container mx-auto px-4 mb-24 text-center relative z-10 w-full">
+                <section className="container mx-auto px-4 mb-32 md:mb-48 text-center relative z-10 w-full">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
