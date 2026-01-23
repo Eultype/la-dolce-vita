@@ -56,7 +56,7 @@ export default function AboutPage() {
                         className="max-w-4xl mx-auto"
                     >
                         <span className="text-italian-gold text-xs font-bold tracking-[0.4em] uppercase mb-6 block">
-                            Notre Histoire
+                            La Nostra Storia
                         </span>
                         <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-foreground font-medium leading-[1.1] mb-12">
                             Une histoire de <br/>
@@ -135,7 +135,7 @@ export default function AboutPage() {
                         <div className="flex items-center justify-center gap-4 mb-4">
                             <div className="h-px w-12 bg-italian-gold/30"></div>
                             <span className="text-italian-gold text-[10px] font-bold tracking-[0.3em] uppercase">
-                                Héritage
+                                L'Eredità
                             </span>
                             <div className="h-px w-12 bg-italian-gold/30"></div>
                         </div>

@@ -79,7 +79,7 @@ const AboutSection = () => {
                             {/* Signature */}
                             <div className="flex items-center gap-4 mb-6">
                                 <span className="text-italian-gold text-[10px] font-bold tracking-[0.3em] uppercase">
-                                    Notre Histoire
+                                    Il Ristorante
                                 </span>
                                 <div className="h-px w-12 bg-italian-gold/30"></div>
                             </div>
@@ -121,7 +121,7 @@ const AboutSection = () => {
                             <div className="pt-8">
                                 <Button variant="link" className="p-0 text-foreground text-lg hover:text-italian-gold transition-colors group" asChild>
                                     <Link href="/about" className="flex items-center gap-2">
-                                        Notre Philosophie 
+                                        Découvrir la Maison 
                                         <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2 text-italian-gold" />
                                     </Link>
                                 </Button>

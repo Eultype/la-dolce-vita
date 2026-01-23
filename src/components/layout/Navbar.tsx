@@ -16,7 +16,7 @@ import { Button } from "@/components/ui/button";
 const navLinks = [
     { href: "/", label: "Accueil" },
     { href: "/about", label: "À propos" },
-    { href: "/menu", label: "Menu" },
+    { href: "/menu", label: "La Carte" },
     { href: "/galerie", label: "Galerie" },
     { href: "/reservation", label: "Réservation" },
     { href: "/contact", label: "Contact" },
