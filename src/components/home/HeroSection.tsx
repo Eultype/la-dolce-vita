@@ -28,9 +28,9 @@ const HeroSection = () => {
         visible: {
             y: 0,
             opacity: 1,
-                        transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as const } 
-                    }
-                };
+            transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as const }
+        }
+    };
     return (
         <section ref={ref} className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden bg-[#1a1512]">
             {/* Background */}

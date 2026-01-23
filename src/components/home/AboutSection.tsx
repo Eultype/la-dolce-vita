@@ -22,7 +22,7 @@ const AboutSection = () => {
         offset: ["start end", "end start"],
     });
     
-    const xText = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
+    const xText = useTransform(scrollYProgress, [0, 1], ["50%", "30%"]);
 
     return (
         <section className="py-24 md:py-32 bg-[#FDFBF7] overflow-hidden relative" ref={containerRef}>
@@ -31,7 +31,7 @@ const AboutSection = () => {
             <div className="absolute top-[15%] -left-[10%] w-[120%] overflow-hidden pointer-events-none opacity-[0.04]">
                 <motion.div style={{ x: xText }} className="whitespace-nowrap">
                     <h2 className="font-serif text-[18vw] leading-none font-bold text-black tracking-tighter">
-                        CUCINA CUCINA
+                        CUCINA
                     </h2>
                 </motion.div>
             </div>
@@ -40,12 +40,12 @@ const AboutSection = () => {
                 <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
                     
                     {/* Colonne de gauche : Image en arche */}
-                    <div className="lg:col-span-6 relative p-4">
+                    <div className="lg:col-span-6 relative">
                         <motion.div
                             initial={{ clipPath: "inset(100% 0 0 0)" }}
                             animate={isInView ? { clipPath: "inset(0 0 0 0)" } : {}}
                             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                            className="relative aspect-[4/5] w-full rounded-t-[15rem] overflow-hidden shadow-2xl border-2 border-italian-gold/50"
+                            className="relative aspect-[4/5] w-full rounded-t-full overflow-hidden shadow-2xl border-2 border-italian-gold/50"
                         >
                             <Image
                                 src="/images/table.jpg"
@@ -76,7 +76,7 @@ const AboutSection = () => {
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
                             transition={{ duration: 0.8, delay: 0.2 }}
                         >
-                            {/* Signature Histoire - Style Ligne Fine */}
+                            {/* Signature */}
                             <div className="flex items-center gap-4 mb-6">
                                 <span className="text-italian-gold text-[10px] font-bold tracking-[0.3em] uppercase">
                                     Notre Histoire
@@ -97,7 +97,7 @@ const AboutSection = () => {
                                 servons pas simplement des plats, nous créons des souvenirs.
                             </p>
 
-                            {/* Points Clés - Grille de 4 pour plus d'impact */}
+                            {/* Points Clés */}
                             <div className="grid grid-cols-2 gap-x-8 gap-y-10 border-t border-italian-gold/20 pt-8">
                                 <div>
                                     <div className="font-serif text-2xl text-foreground mb-1">Pasta Fresca</div>
@@ -117,7 +117,7 @@ const AboutSection = () => {
                                 </div>
                             </div>
 
-                            {/* Bouton notre Philosophie*/}
+                            {/* Bouton notre Philosophie */}
                             <div className="pt-8">
                                 <Button variant="link" className="p-0 text-foreground text-lg hover:text-italian-gold transition-colors group" asChild>
                                     <Link href="/about" className="flex items-center gap-2">

@@ -36,9 +36,11 @@ export function Footer() {
                         </span>
                         <ul className="space-y-3 text-sm">
                             <li><Link href="/" className="text-white/70 hover:text-white hover:translate-x-1 transition-all inline-block">Accueil</Link></li>
+                            <li><Link href="/about" className="text-white/70 hover:text-white hover:translate-x-1 transition-all inline-block">À propos de nous</Link></li>
                             <li><Link href="/menu" className="text-white/70 hover:text-white hover:translate-x-1 transition-all inline-block">Notre Carte</Link></li>
                             <li><Link href="/galerie" className="text-white/70 hover:text-white hover:translate-x-1 transition-all inline-block">Galerie</Link></li>
                             <li><Link href="/reservation" className="text-white/70 hover:text-white hover:translate-x-1 transition-all inline-block">Réserver</Link></li>
+                            <li><Link href="/contact" className="text-white/70 hover:text-white hover:translate-x-1 transition-all inline-block">Contactez-nous</Link></li>
                         </ul>
                     </div>
 

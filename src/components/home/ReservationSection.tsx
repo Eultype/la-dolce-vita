@@ -1,13 +1,13 @@
 "use client";
 
-// Imports Next
+// Import Next
 import Link from "next/link";
 import Image from "next/image";
-// Imports React
+// Import React
 import { useRef } from "react";
-// Imports Framer Motion
+// Import Framer Motion
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-// Imports UI
+// Import des composants
 import { Button } from "@/components/ui/button";
 
 const ReservationSection = () => {
