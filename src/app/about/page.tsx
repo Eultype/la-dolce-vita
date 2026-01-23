@@ -229,6 +229,15 @@ export default function AboutPage() {
                         ))}
                     </div>
                 </section>
+
+                {/* Bouton CTA */}
+                <div className="text-center pb-32 pt-0">
+                    <Button variant="hero" size="xl" className="rounded-full px-12 h-16 bg-foreground text-background hover:bg-italian-gold hover:text-white transition-all duration-500 shadow-xl" asChild>
+                        <Link href="/menu">
+                            Découvrir la Carte
+                        </Link>
+                    </Button>
+                </div>
             </div>
         </div>
     );
