@@ -17,6 +17,7 @@ import DessertIcon from "@/components/ui/DessertIcon";
 
 const categories = ["Antipasti", "Primi Piatti", "Secondi Piatti", "Le Pizze", "Dolci", "Vini", "Bevande"];
 
+// Page La carte
 export default function MenuPage() {
     const containerRef = useRef(null);
     const [activeCategory, setActiveCategory] = useState("Antipasti");
@@ -58,8 +59,9 @@ export default function MenuPage() {
                             </span>
                             <div className="h-px w-12 bg-italian-gold/40"></div>
                         </div>
-                        <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl text-foreground font-medium leading-[0.9] mb-12">
-                            La <span className="italic text-italian-gold font-light">Carta.</span>
+                        <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-foreground font-medium leading-[1.1] mb-12">
+                            L'Art de la <br/>
+                            <span className="italic text-italian-gold font-light">Dégustation.</span>
                         </h1>
                         <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto">
                             Une invitation au voyage culinaire à travers les terroirs d'Italie.

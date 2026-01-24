@@ -55,9 +55,13 @@ export default function AboutPage() {
                         transition={{ duration: 0.8 }}
                         className="max-w-4xl mx-auto"
                     >
-                        <span className="text-italian-gold text-xs font-bold tracking-[0.4em] uppercase mb-6 block">
-                            La Nostra Storia
-                        </span>
+                        <div className="flex items-center justify-center gap-4 mb-6">
+                            <div className="h-px w-12 bg-italian-gold/40"></div>
+                            <span className="text-italian-gold text-[10px] font-bold tracking-[0.4em] uppercase">
+                                La Nostra Storia
+                            </span>
+                            <div className="h-px w-12 bg-italian-gold/40"></div>
+                        </div>
                         <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-foreground font-medium leading-[1.1] mb-12">
                             Une histoire de <br/>
                             <span className="italic text-italian-gold font-light">Famille.</span>
@@ -174,13 +178,16 @@ export default function AboutPage() {
                         className="w-full"
                     >
                         <div className="relative py-6 px-4">
+                            {/* Quote gauche */}
                             <Quote className="absolute top-0 left-0 w-10 h-10 text-italian-gold/20 fill-current opacity-50" />
                             <h3 className="font-serif text-3xl md:text-5xl leading-tight mb-8 italic text-foreground font-light px-8 w-full">
                                 "Nous n'avons pas hérité de recettes, nous avons hérité d'une mémoire. Chaque assiette est un souvenir que nous partageons avec vous."
                             </h3>
+                            {/* Quote droit */}
                             <Quote className="absolute bottom-0 right-0 w-10 h-10 text-italian-gold/20 fill-current opacity-50 rotate-180" />
                         </div>
 
+                        {/* Auteur */}
                         <div className="flex flex-col items-center gap-2">
                             <span className="text-italian-gold font-bold uppercase tracking-widest text-sm">Maria Rossi</span>
                             <span className="text-muted-foreground text-xs uppercase tracking-widest">Chef Propriétaire</span>
@@ -213,7 +220,7 @@ export default function AboutPage() {
                                 transition={{ delay: i * 0.2 }}
                                 className="group text-center"
                             >
-                                {/* L'Arche Équipe avec effet N&B -> Couleur au survol de l'image */}
+                                {/* L'Arche Équipe */}
                                 <div className="relative aspect-[3/4] w-full overflow-hidden mb-6 rounded-t-full shadow-lg border-2 border-italian-gold/30 grayscale hover:grayscale-0 transition-all duration-700 cursor-pointer">
                                     <Image
                                         src={member.image}

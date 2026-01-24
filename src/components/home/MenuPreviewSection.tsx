@@ -69,7 +69,9 @@ const MenuPreviewSection = () => {
 
                 {/* Grilles de plat */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-                    {dishes.map((dish, index) => (
+                    {dishes
+                        .filter(dish => ["Margherita", "Spaghetti alla Carbonara", "Tiramisù"].includes(dish.name))
+                        .map((dish, index) => (
                         <motion.div
                             key={dish.name}
                             initial={{ opacity: 0, y: 50 }}
