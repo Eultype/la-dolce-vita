@@ -19,7 +19,7 @@ export default function GaleriePage() {
         offset: ["start start", "end end"],
     });
 
-    const xText = useTransform(scrollYProgress, [0, 1], ["-10%", "-20%"]);
+    const xText = useTransform(scrollYProgress, [0, 1], ["-5%", "-40%"]);
 
     return (
         <div className="bg-[#FDFBF7] min-h-screen overflow-hidden relative" ref={containerRef}>

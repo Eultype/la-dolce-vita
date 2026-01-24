@@ -24,7 +24,7 @@ export default function AboutPage() {
         offset: ["start end", "end start"],
     });
 
-    const xText = useTransform(scrollYProgress, [0, 0.5], ["5%", "-25%"]);
+    const xText = useTransform(scrollYProgress, [0, 1], ["3%", "-40%"]);
 
     return (
         <div
@@ -41,7 +41,7 @@ export default function AboutPage() {
             <div className="absolute top-[5%] left-0 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none z-0">
                 <motion.div style={{ x: xText }} className="whitespace-nowrap">
                     <h2 className="font-serif text-[25vw] leading-none font-bold text-black tracking-tighter">
-                        FAMIGLIA FAMIGLIA
+                        FAMIGLIA
                     </h2>
                 </motion.div>
             </div>

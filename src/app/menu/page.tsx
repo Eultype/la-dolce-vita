@@ -7,8 +7,8 @@ import { useRef, useState } from "react";
 // Import de Framer Motion
 import { motion, useScroll, useTransform } from "framer-motion";
 // Import de Lucide Icons
-import { Salad, Beef, Pizza, IceCream, Grape, Martini } from "lucide-react";
-// Import des composants partagés
+import { Salad, Beef, Pizza, Grape, Martini } from "lucide-react";
+// Import des composants
 import { Button } from "@/components/ui/button";
 import { dishes } from "@/data/menu";
 import { MenuListItem } from "./_components/MenuListItem";
@@ -28,13 +28,13 @@ export default function MenuPage() {
         offset: ["start start", "end end"],
     });
 
-    const xText = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
+    const xText = useTransform(scrollYProgress, [0, 1], ["-5%", "-20%"]);
 
     return (
         <div className="bg-[#FDFBF7] min-h-screen overflow-hidden relative" ref={containerRef}>
 
             {/* Texte de fond "LA CARTA" */}
-            <div className="absolute top-[10%] left-0 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none z-0">
+            <div className="absolute top-[7%] left-0 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none z-0">
                 <motion.div style={{ x: xText }} className="whitespace-nowrap">
                     <h2 className="font-serif text-[25vw] leading-none font-bold text-black tracking-tighter">
                         LA CARTA LA CARTA
