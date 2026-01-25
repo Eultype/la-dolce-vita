@@ -2,96 +2,39 @@
 
 // Import Next & React
 import Image from "next/image";
-import { useState, useRef } from "react";
+import { useRef } from "react";
 // Import Framer Motion
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 // Import Lucide Icons
 import { Calendar, Users, ChevronRight, ChevronLeft, Check } from "lucide-react";
 // Import des composants
 import { Button } from "@/components/ui/button";
-// Import Types & Validation
-import { ReservationFormData } from "@/types/reservation";
-import { reservationSchema } from "@/lib/schemas";
-
+// Import Custom Hook
+import { useReservation } from "@/hooks/useReservation";
 // Import des composants étapes
 import StepGuests from "./_components/steps/StepGuests";
 import StepDate from "./_components/steps/StepDate";
 import StepTime from "./_components/steps/StepTime";
 import StepContact from "./_components/steps/StepContact";
 
-const INITIAL_DATA: ReservationFormData = {
-    date: "",
-    time: "",
-    guests: "2",
-    name: "",
-    email: "",
-    phone: "",
-    notes: "",
-};
-
-const TOTAL_STEPS = 4;
-
 export default function ReservationPage() {
     const containerRef = useRef(null);
-    const [step, setStep] = useState(1);
-    const [formData, setFormData] = useState<ReservationFormData>(INITIAL_DATA);
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    const [errors, setErrors] = useState<Record<string, string>>({}); // Stockage des erreurs de validation
-
-    // Gestion des champs
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
-        // Effacer l'erreur quand l'utilisateur corrige
-        if (errors[name]) {
-            setErrors(prev => {
-                const newErrors = { ...prev };
-                delete newErrors[name];
-                return newErrors;
-            });
-        }
-    };
-
-    // Navigation
-    const nextStep = () => {
-        // Validation basique avant de passer à l'étape suivante
-        if (step === 2 && !formData.date) return;
-        if (step === 3 && !formData.time) return;
-        
-        setStep(prev => Math.min(prev + 1, TOTAL_STEPS));
-    };
     
-    const prevStep = () => setStep(prev => Math.max(prev - 1, 1));
-
-    // Soumission avec Validation Zod
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        
-        // Validation avec Zod
-        const result = reservationSchema.safeParse(formData);
-
-        if (!result.success) {
-            // Conversion des erreurs Zod en objet simple pour l'affichage
-            const formattedErrors: Record<string, string> = {};
-            result.error.issues.forEach((issue) => {
-                const key = String(issue.path[0]);
-                formattedErrors[key] = issue.message;
-            });
-            setErrors(formattedErrors);
-            console.log("Erreurs de validation:", formattedErrors);
-            return;
-        }
-
-        // Si valide
-        setErrors({});
-        setTimeout(() => setIsSubmitted(true), 1500);
-    };
-
-    // Formattage date pour affichage
-    const formatDateDisplay = (dateStr: string) => {
-        if (!dateStr) return "Choisir une date";
-        return new Date(dateStr).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
-    };
+    // Logique
+    const {
+        step,
+        totalSteps,
+        formData,
+        setFormData,
+        errors,
+        isSubmitted,
+        handleChange,
+        nextStep,
+        prevStep,
+        submitForm,
+        resetForm,
+        formatDateDisplay
+    } = useReservation();
 
     return (
         <div className="bg-[#FDFBF7] overflow-hidden relative" ref={containerRef}>
@@ -115,7 +58,7 @@ export default function ReservationPage() {
                                 <motion.div
                                     className="absolute top-0 left-0 h-full bg-italian-gold"
                                     initial={{ width: "25%" }}
-                                    animate={{ width: isSubmitted ? "100%" : `${(step / TOTAL_STEPS) * 100}%` }}
+                                    animate={{ width: isSubmitted ? "100%" : `${(step / totalSteps) * 100}%` }}
                                     transition={{ duration: 0.8, ease: [0.65, 0, 0.35, 1] }}
                                 />
                             </div>
@@ -130,29 +73,22 @@ export default function ReservationPage() {
                                         animate={{ opacity: 1, x: 0 }}
                                         exit={{ opacity: 0, x: -20 }}
                                         transition={{ duration: 0.4 }}
-                                        onSubmit={handleSubmit}
+                                        onSubmit={submitForm}
                                         className="bg-white p-4 md:p-12 border border-italian-gold/10 shadow-xl rounded-sm min-h-[600px] flex flex-col w-full"
                                     >
                                         <div className="flex-1">
                                             {/* Compteur d'étape interne */}
                                             <div className="flex justify-end mb-8">
                                                 <span className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-bold italic">
-                                                    0{step} <span className="mx-2 opacity-30">/</span> 0{TOTAL_STEPS}
+                                                    0{step} <span className="mx-2 opacity-30">/</span> 0{totalSteps}
                                                 </span>
                                             </div>
 
                                             {/* Rendu des étapes */}
-                                            {step === 1 && <StepGuests formData={formData} setFormData={setFormData} onNext={nextStep} />}
-                                            {step === 2 && <StepDate formData={formData} onChange={handleChange} formatDateDisplay={formatDateDisplay} />}
-                                            {step === 3 && <StepTime formData={formData} setFormData={setFormData} />}
-                                            {/* On passe les erreurs à l'étape 4 uniquement */}
-                                            {step === 4 && (
-                                                <StepContact 
-                                                    formData={formData} 
-                                                    onChange={handleChange} 
-                                                    errors={errors} // On passera les erreurs ici
-                                                />
-                                            )}
+                                            {step === 1 && ( <StepGuests formData={formData} setFormData={setFormData} onNext={nextStep} /> )}
+                                            {step === 2 && ( <StepDate formData={formData} onChange={handleChange} formatDateDisplay={formatDateDisplay}/> )}
+                                            {step === 3 && ( <StepTime formData={formData} setFormData={setFormData}/> )}
+                                            {step === 4 && ( <StepContact formData={formData} onChange={handleChange} errors={errors}/> )}
                                         </div>
 
                                         {/* Boutons de navigation */}
@@ -204,7 +140,7 @@ export default function ReservationPage() {
                                         <Button
                                             variant="hero"
                                             className="bg-foreground text-background hover:bg-italian-gold hover:text-white transition-all duration-300 px-12 h-14 rounded-none"
-                                            onClick={() => {setIsSubmitted(false); setStep(1); setFormData(INITIAL_DATA)}}
+                                            onClick={resetForm}
                                         >
                                             Nouvelle Réservation
                                         </Button>
