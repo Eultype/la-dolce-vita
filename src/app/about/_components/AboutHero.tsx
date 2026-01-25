@@ -15,12 +15,12 @@ export default function AboutHero() {
         offset: ["start end", "end start"],
     });
 
-    const xText = useTransform(scrollYProgress, [0, 1], ["3%", "-40%"]);
+    const xText = useTransform(scrollYProgress, [0, 1], ["25%", "-30%"]);
 
     return (
         <div ref={containerRef}>
             {/* Texte de fond "FAMIGLIA" */}
-            <div className="absolute top-[5.5%] md:top-[9.6%] lg:top-[12%] xl:top-[4.5%] left-0 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none z-0">
+            <div className="absolute top-[5.2%] md:top-[9.0%] lg:top-[11.5%] xl:top-[4.5%] left-0 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none z-0">
                 <motion.div style={{ x: xText }} className="whitespace-nowrap">
                     <h2 className="font-serif text-[25vw] leading-none font-bold text-black tracking-tighter">
                         FAMIGLIA
