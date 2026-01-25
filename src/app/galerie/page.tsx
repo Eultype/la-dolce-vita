@@ -1,6 +1,6 @@
 "use client";
 
-// Import des composants locaux
+// Import des composants de la page " Galerie "
 import GalerieHero from "./_components/GalerieHero";
 import GalerieGrid from "./_components/GalerieGrid";
 import GalerieQuote from "./_components/GalerieQuote";
