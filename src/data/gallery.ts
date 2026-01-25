@@ -14,6 +14,6 @@ export const galleryImages = [
     { src: "/images/gallery-5.jpg", alt: "Passione", span: "md:col-span-2 md:row-span-1" },
     { src: "/images/Luca.jpg", alt: "L'Accoglienza", span: "md:col-span-1 md:row-span-1" },
     { src: "/images/Giulia.jpg", alt: "Il Sorriso", span: "md:col-span-1 md:row-span-1" },
-    { src: "/images/giuseppe.jpg", alt: "Memoria", span: "md:col-span-1 md:row-span-1" },
+    { src: "/images/Giuseppe.jpg", alt: "Memoria", span: "md:col-span-1 md:row-span-1" },
     { src: "/images/table3.jpg", alt: "La Base", span: "md:col-span-full md:row-span-2" }
 ];

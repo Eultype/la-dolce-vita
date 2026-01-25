@@ -221,7 +221,7 @@ export const dishes = [
         name: "Diavola",
         description: "Tomate, mozzarella, salami piquant, poivrons.",
         price: "16,50",
-        image: "/images/pizza-dish.jpg",
+        image: "/images/pizza-marguerita2.jpg",
         origin: "CALABRIA",
         category: "Le Pizze",
         subCategory: "Pizzas Rossa"

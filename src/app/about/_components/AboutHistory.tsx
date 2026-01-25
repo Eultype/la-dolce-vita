@@ -22,7 +22,7 @@ export default function AboutHistory() {
                     <div className="relative aspect-[5/3] w-full overflow-hidden rounded-sm shadow-2xl border border-italian-gold/30 p-2 bg-white">
                         <div className="relative w-full h-full overflow-hidden border border-black/5">
                             <Image
-                                src="/images/giuseppe.jpg"
+                                src="/images/Giuseppe.jpg"
                                 alt="Giuseppe, le fondateur"
                                 fill
                                 className="object-cover sepia-[0.3]"

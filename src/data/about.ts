@@ -2,7 +2,7 @@ export const teamMembers = [
     { 
         name: "Maria Rossi", 
         role: "Chef Exécutif", 
-        image: "/images/maria.jpg", 
+        image: "/images/Maria.jpg",
         quote: "La passion dans chaque geste." 
     },
     { 
