@@ -31,10 +31,12 @@ export default function MenuPage() {
     const xText = useTransform(scrollYProgress, [0, 1], ["-5%", "-20%"]);
 
     return (
-        <div className="bg-[#FDFBF7] min-h-screen overflow-hidden relative" ref={containerRef}>
+        <div className="bg-[#FDFBF7] min-h-screen overflow-hidden relative"
+             ref={containerRef}
+        >
 
             {/* Texte de fond "LA CARTA" */}
-            <div className="absolute top-[7%] left-0 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none z-0">
+            <div className="absolute top-[8.5%] md:top-[12.7%] lg:top-[15.5%] xl:top-[6.5%] left-0 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none z-0">
                 <motion.div style={{ x: xText }} className="whitespace-nowrap">
                     <h2 className="font-serif text-[25vw] leading-none font-bold text-black tracking-tighter">
                         LA CARTA LA CARTA
@@ -143,13 +145,13 @@ export default function MenuPage() {
 
                             if (subCategories.length > 0) {
                                 return (
-                                    <div className="space-y-24">
+                                    <div className="space-y-16">
                                         {subCategories.map((subCat) => (
                                             <div key={subCat as string} className="space-y-12">
                                                 {/* Titre de sous-catégorie */}
                                                 <div className="flex items-center gap-6 justify-center relative z-10">
                                                     <div className="h-px w-8 bg-italian-gold/20"></div>
-                                                    <h3 className="font-serif text-2xl text-italian-gold italic px-6 bg-[#FDFBF7] relative z-20">{subCat as string}</h3>
+                                                    <h3 className="font-serif text-2xl text-italian-gold italic px-4 bg-[#FDFBF7] relative z-20">{subCat as string}</h3>
                                                     <div className="h-px w-8 bg-italian-gold/20"></div>
                                                 </div>
                                                 {/* Grille des plats pour la sous-catégorie courante */}

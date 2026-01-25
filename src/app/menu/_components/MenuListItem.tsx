@@ -16,7 +16,7 @@ export const MenuListItem = ({ dish, index }: { dish: Dish; index: number }) => 
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: index * 0.1 }}
-        className="group flex justify-between items-start gap-6 pb-8 border-b border-italian-gold/5 hover:border-italian-gold/20 transition-colors cursor-pointer"
+        className="group flex justify-between items-start gap-6 border-b border-italian-gold/5 hover:border-italian-gold/20 transition-colors cursor-pointer"
     >
         <div className="space-y-2 flex-grow">
             <div className="flex items-baseline gap-4">

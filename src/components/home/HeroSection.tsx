@@ -79,9 +79,9 @@ const HeroSection = () => {
                     <h1 className="flex flex-col items-center justify-center overflow-hidden leading-[0.85]">
                         <motion.span
                             variants={titleVariant}
-                            className="font-serif text-6xl md:text-8xl lg:text-[9rem] font-medium text-[#f0ebe0] tracking-tight"
+                            className="font-serif text-6xl md:text-8xl lg:text-[9rem] font-medium text-[#f0ebe0]"
                         >
-                            LA DOLCE
+                            LA <span className="tracking-tight">DOLCE</span>
                         </motion.span>
                         <motion.span
                             variants={titleVariant}

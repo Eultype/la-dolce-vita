@@ -38,7 +38,7 @@ export default function AboutPage() {
             </div>
 
             {/* Texte de fond "FAMIGLIA" */}
-            <div className="absolute top-[5%] left-0 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none z-0">
+            <div className="absolute top-[5.5%] md:top-[9.6%] lg:top-[12%] xl:top-[4.5%] left-0 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none z-0">
                 <motion.div style={{ x: xText }} className="whitespace-nowrap">
                     <h2 className="font-serif text-[25vw] leading-none font-bold text-black tracking-tighter">
                         FAMIGLIA
@@ -48,7 +48,7 @@ export default function AboutPage() {
 
             <div className="relative z-10">
                 {/* Titre + Description */}
-                <section className="container mx-auto px-4 min-h-screen flex flex-col justify-center text-center pt-20">
+                <section className="container mx-auto px-4 min-h-screen flex flex-col justify-center text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}

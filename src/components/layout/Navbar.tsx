@@ -79,7 +79,7 @@ export function Navbar() {
                     </Link>
 
                     {/* Navigation Ordinateur */}
-                    <div className="hidden lg:flex items-center gap-10">
+                    <div className="hidden xl:flex items-center gap-10">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.href}
@@ -94,7 +94,7 @@ export function Navbar() {
 
                     {/* Boutons CTA & Menu mobile */}
                     <div className="flex items-center gap-4">
-                        <div className="hidden lg:block">
+                        <div className="hidden xl:block">
                             <Button 
                                 variant="ghost" 
                                 size="sm" 
@@ -112,7 +112,7 @@ export function Navbar() {
                         {/* Bouton Menu Mobile */}
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className={`lg:hidden p-2 transition-colors duration-300 ${textColor}`}
+                            className={`xl:hidden p-2 transition-colors duration-300 ${textColor}`}
                             aria-label="Toggle menu"
                         >
                             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
