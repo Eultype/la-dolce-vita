@@ -66,7 +66,7 @@ export default function AboutPage() {
                             Une histoire de <br/>
                             <span className="italic text-italian-gold font-light">Famille.</span>
                         </h1>
-                        <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto">
+                        <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed mx-auto">
                             Depuis 1985, La Dolce Vita est le gardien d'un savoir-faire transmis de génération en génération. Une histoire d'amour entre Bruxelles et la Toscane.
                         </p>
                     </motion.div>

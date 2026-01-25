@@ -4,6 +4,8 @@
 import Link from "next/link";
 // Import de Lucide Icons
 import { Instagram, Facebook } from "lucide-react";
+// Import Data
+import { contactInfo } from "@/data/contact";
 
 // Composant du Footer
 export function Footer() {
@@ -20,10 +22,10 @@ export function Footer() {
                             L'authenticité italienne au cœur de Bruxelles. Une cuisine de passion depuis 1985.
                         </p>
                         <div className="flex gap-4 pt-2">
-                            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-italian-gold hover:border-italian-gold hover:text-[#1a1512] transition-all duration-300">
+                            <a href={contactInfo.social.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-italian-gold hover:border-italian-gold hover:text-[#1a1512] transition-all duration-300">
                                 <Instagram className="w-4 h-4" />
                             </a>
-                            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-italian-gold hover:border-italian-gold hover:text-[#1a1512] transition-all duration-300">
+                            <a href={contactInfo.social.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-italian-gold hover:border-italian-gold hover:text-[#1a1512] transition-all duration-300">
                                 <Facebook className="w-4 h-4" />
                             </a>
                         </div>
@@ -50,13 +52,13 @@ export function Footer() {
                             Nous trouver
                         </span>
                         <address className="not-italic text-sm text-white/80 leading-relaxed font-light">
-                            42 Rue de la Gastronomie<br />
-                            1000 Bruxelles
+                            {contactInfo.address.street}<br />
+                            {contactInfo.address.zip} {contactInfo.address.city}
                         </address>
                         <div className="space-y-6">
                             <span className="text-italian-gold text-xs font-bold tracking-[0.2em] uppercase block">Réservations</span>
-                            <a href="tel:+3221234567" className="block text-sm font-bold hover:text-italian-gold transition-colors">
-                                +32 2 123 45 67
+                            <a href={contactInfo.contact.phoneLink} className="block text-sm font-bold hover:text-italian-gold transition-colors">
+                                {contactInfo.contact.phone}
                             </a>
                         </div>
                     </div>
@@ -67,18 +69,12 @@ export function Footer() {
                             Horaires
                         </span>
                         <ul className="space-y-3 text-white/60 text-sm font-light">
-                            <li className="flex justify-between border-b border-white/5 pb-2">
-                                <span>Lun - Ven</span>
-                                <span>12h-14h30 / 19h-23h</span>
-                            </li>
-                            <li className="flex justify-between border-b border-white/5 pb-2">
-                                <span>Samedi</span>
-                                <span>19h-23h30</span>
-                            </li>
-                            <li className="flex justify-between border-b border-white/5 pb-2">
-                                <span>Dimanche</span>
-                                <span className="text-italian-gold">Fermé</span>
-                            </li>
+                            {contactInfo.openingHours.map((item, index) => (
+                                <li key={index} className="flex items-start border-b border-white/5 pb-2">
+                                    <span className="w-24 font-medium shrink-0">{item.day}</span>
+                                    <span className={item.hours === "Fermé" ? "text-italian-gold" : ""}>{item.hours}</span>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>

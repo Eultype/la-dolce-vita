@@ -63,7 +63,7 @@ export default function MenuPage() {
                             L'Art de la <br/>
                             <span className="italic text-italian-gold font-light">Dégustation.</span>
                         </h1>
-                        <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto">
+                        <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed mx-auto">
                             Une invitation au voyage culinaire à travers les terroirs d'Italie.
                             Découvrez une sélection de produits d'exception et de recettes authentiques.
                         </p>

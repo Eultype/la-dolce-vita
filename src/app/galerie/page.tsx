@@ -52,7 +52,7 @@ export default function GaleriePage() {
                         Instants de <br/>
                         <span className="italic text-italian-gold font-light">Vie.</span>
                     </h1>
-                    <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto">
+                    <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed mx-auto">
                         Une mosaïque de souvenirs et de lumières. Plongez dans l'atmosphère unique de La Dolce Vita, là où chaque détail compte.
                     </p>
                 </motion.div>

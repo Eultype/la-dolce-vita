@@ -9,7 +9,6 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { Calendar, Users, ChevronRight, ChevronLeft, Check } from "lucide-react";
 // Import Components
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 // Import Types
 import { ReservationFormData } from "@/types/reservation";
 
@@ -42,7 +41,7 @@ export default function ReservationPage() {
         target: containerRef,
         offset: ["start end", "end start"],
     });
-    const xText = useTransform(scrollYProgress, [0, 1], ["-5%", "20%"]);
+    const xText = useTransform(scrollYProgress, [0, 1], ["25%", "-20%"]);
 
     // Gestion des champs
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -68,8 +67,8 @@ export default function ReservationPage() {
 
     return (
         <div className="bg-[#FDFBF7] overflow-hidden relative" ref={containerRef}>
-            
-            {/* --- BACKGROUNDS --- */}
+
+            {/* Background */}
             <div className="fixed inset-0 pointer-events-none opacity-[0.04] z-50 mix-blend-overlay"
                  style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}>
             </div>
@@ -81,10 +80,9 @@ export default function ReservationPage() {
                 </motion.div>
             </div>
 
-            {/* --- MAIN CONTENT --- */}
             <div className="relative z-10 pt-32 pb-20 container mx-auto px-4">
 
-                {/* Header Compact */}
+                {/* Header */}
                 <div className="text-center mb-16">
                     <span className="text-italian-gold text-[10px] font-bold tracking-[0.4em] uppercase mb-4 block">Benvenuti</span>
                     <h1 className="font-serif text-5xl md:text-6xl text-foreground font-medium">
@@ -92,14 +90,14 @@ export default function ReservationPage() {
                     </h1>
                 </div>
 
-                <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center max-w-7xl mx-auto">
+                <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center mx-auto">
 
-                    {/* --- COLONNE GAUCHE : FORMULAIRE --- */}
+                    {/* Colonne de gauche : Formulaire */}
                     <div className="lg:col-span-8 order-2 lg:order-1">
 
-                        {/* Barre de progression Pro (Minimaliste) */}
+                        {/* Barre de progression */}
                         <div className="mb-10 px-4 max-w-2xl mx-auto">
-                            <div className="h-[1px] w-full bg-gray-200 relative overflow-hidden">
+                            <div className="h-[1px] w-full relative overflow-hidden">
                                 <motion.div
                                     className="absolute top-0 left-0 h-full bg-italian-gold"
                                     initial={{ width: "25%" }}
@@ -109,7 +107,7 @@ export default function ReservationPage() {
                             </div>
                         </div>
 
-                        <div className="min-h-[600px]">
+                        <div className="min-h-[600px] overflow-hidden relative rounded-sm">
                             <AnimatePresence mode="wait">
                                 {!isSubmitted ? (
                                     <motion.form
@@ -119,7 +117,7 @@ export default function ReservationPage() {
                                         exit={{ opacity: 0, x: -20 }}
                                         transition={{ duration: 0.4 }}
                                         onSubmit={handleSubmit}
-                                        className="bg-white p-8 md:p-12 border border-italian-gold/10 shadow-xl rounded-sm h-[600px] flex flex-col"
+                                        className="bg-white p-4 md:p-12 border border-italian-gold/10 shadow-xl rounded-sm min-h-[600px] flex flex-col w-full"
                                     >
                                         <div className="flex-1">
                                             {/* Compteur d'étape interne */}
@@ -129,14 +127,14 @@ export default function ReservationPage() {
                                                 </span>
                                             </div>
 
-                                            {/* STEPS RENDERER */}
+                                            {/* Rendu des étapes */}
                                             {step === 1 && <StepGuests formData={formData} setFormData={setFormData} onNext={nextStep} />}
                                             {step === 2 && <StepDate formData={formData} onChange={handleChange} formatDateDisplay={formatDateDisplay} />}
                                             {step === 3 && <StepTime formData={formData} setFormData={setFormData} />}
                                             {step === 4 && <StepContact formData={formData} onChange={handleChange} />}
                                         </div>
 
-                                        {/* BOUTONS NAVIGATION */}
+                                        {/* Boutons de navigation */}
                                         <div className="flex items-center justify-between pt-4 mt-auto border-t border-gray-50">
                                             {step > 1 ? (
                                                 <Button type="button" variant="outline" onClick={prevStep} className="gap-2 border-gray-200 hover:border-italian-gold text-muted-foreground hover:text-italian-gold">
@@ -195,15 +193,15 @@ export default function ReservationPage() {
                         </div>
                     </div>
 
-                    {/* --- COLONNE DROITE : L'ARCHE RÉCAPITULATIF --- */}
+                    {/* Colonne de droite : Récapitulatif */}
                     <div className="lg:col-span-4 order-1 lg:order-2 sticky top-32 transition-all duration-500">
                         <motion.div
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="relative w-full aspect-[3/4.5] rounded-t-[1000px] overflow-hidden bg-[#1a1512] text-white shadow-2xl border-4 border-double border-italian-gold/30 p-8 flex flex-col items-center pt-24"
+                            className="relative w-full lg:aspect-[3/4.5] rounded-t-[1000px] overflow-hidden bg-[#1a1512] text-white shadow-2xl border-4 border-double border-italian-gold/30 p-8 flex flex-col items-center pt-10 lg:pt-24"
                         >
-                            {/* Fond image subtile */}
+                            {/* Fond image */}
                             <div className="absolute inset-0 z-0 opacity-20">
                                 <Image
                                     src="/images/table3.jpg"
@@ -213,7 +211,7 @@ export default function ReservationPage() {
                                 />
                             </div>
 
-                            {/* Overlay degradé */}
+                            {/* Overlay */}
                             <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/40 to-black/80"></div>
 
                             {/* Contenu Récap */}
@@ -248,14 +246,13 @@ export default function ReservationPage() {
                                     </div>
                                 </div>
 
-                                {/* Footer Arche */}
+                                {/* Footer */}
                                 <div className="mt-auto pt-8 border-t border-white/10">
                                     <p className="text-[10px] text-white/40 uppercase tracking-widest">La Dolce Vita • Bruxelles</p>
                                 </div>
                             </div>
                         </motion.div>
                     </div>
-
                 </div>
             </div>
         </div>

@@ -44,7 +44,7 @@
       --color-italian-brown: hsl(var(--italian-brown));
       --color-italian-terracotta: hsl(var(--italian-terracotta));
       --color-italian-olive: hsl(var(--italian-olive));
-    
+
       /* --- Sidebar --- */    --color-sidebar: hsl(var(--sidebar-background));
     --color-sidebar-foreground: hsl(var(--sidebar-foreground));
     --color-sidebar-primary: hsl(var(--sidebar-primary));
@@ -229,7 +229,7 @@
         max-width: 1400px;
         width: 100%;
     }
-  
+
     /* Text Gradient */
     .text-gradient-gold {
         @apply bg-clip-text text-transparent;
