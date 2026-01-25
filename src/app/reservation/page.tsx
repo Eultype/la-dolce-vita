@@ -7,12 +7,13 @@ import { useState, useRef } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 // Import Lucide Icons
 import { Calendar, Users, ChevronRight, ChevronLeft, Check } from "lucide-react";
-// Import Components
+// Import des composants
 import { Button } from "@/components/ui/button";
-// Import Types
+// Import Types & Validation
 import { ReservationFormData } from "@/types/reservation";
+import { reservationSchema } from "@/lib/schemas";
 
-// Import Steps Components
+// Import des composants étapes
 import StepGuests from "./_components/steps/StepGuests";
 import StepDate from "./_components/steps/StepDate";
 import StepTime from "./_components/steps/StepTime";
@@ -35,6 +36,7 @@ export default function ReservationPage() {
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState<ReservationFormData>(INITIAL_DATA);
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [errors, setErrors] = useState<Record<string, string>>({}); // Stockage des erreurs de validation
 
     // Scroll parallax pour le texte de fond
     const { scrollYProgress } = useScroll({
@@ -47,15 +49,48 @@ export default function ReservationPage() {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
+        // Effacer l'erreur quand l'utilisateur corrige
+        if (errors[name]) {
+            setErrors(prev => {
+                const newErrors = { ...prev };
+                delete newErrors[name];
+                return newErrors;
+            });
+        }
     };
 
     // Navigation
-    const nextStep = () => setStep(prev => Math.min(prev + 1, TOTAL_STEPS));
+    const nextStep = () => {
+        // Validation basique avant de passer à l'étape suivante
+        if (step === 2 && !formData.date) return;
+        if (step === 3 && !formData.time) return;
+        
+        setStep(prev => Math.min(prev + 1, TOTAL_STEPS));
+    };
+    
     const prevStep = () => setStep(prev => Math.max(prev - 1, 1));
 
-    // Soumission
+    // Soumission avec Validation Zod
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        
+        // Validation avec Zod
+        const result = reservationSchema.safeParse(formData);
+
+        if (!result.success) {
+            // Conversion des erreurs Zod en objet simple pour l'affichage
+            const formattedErrors: Record<string, string> = {};
+            result.error.issues.forEach((issue) => {
+                const key = String(issue.path[0]);
+                formattedErrors[key] = issue.message;
+            });
+            setErrors(formattedErrors);
+            console.log("Erreurs de validation:", formattedErrors);
+            return; // On arrête tout si invalide
+        }
+
+        // Si valide
+        setErrors({}); // Nettoyer les erreurs
         setTimeout(() => setIsSubmitted(true), 1500);
     };
 
@@ -67,6 +102,18 @@ export default function ReservationPage() {
 
     return (
         <div className="bg-[#FDFBF7] overflow-hidden relative" ref={containerRef}>
+            {/* Background */}
+            <div className="fixed inset-0 pointer-events-none opacity-[0.04] z-50 mix-blend-overlay"
+                 style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}>
+            </div>
+            <div className="absolute top-[2%] -left-[10%] w-[120%] overflow-hidden pointer-events-none opacity-[0.03] select-none z-0">
+                <motion.div style={{ x: xText }} className="whitespace-nowrap">
+                    <h2 className="font-serif text-[20vw] leading-none font-bold text-black tracking-tighter">
+                        PRENOTARE
+                    </h2>
+                </motion.div>
+            </div>
+
             <div className="relative z-10 pt-32 pb-20 container mx-auto px-4">
 
                 {/* Header */}
@@ -77,7 +124,7 @@ export default function ReservationPage() {
                     </h1>
                 </div>
 
-                <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center mx-auto">
+                <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center max-w-7xl mx-auto">
 
                     {/* Colonne de gauche : Formulaire */}
                     <div className="lg:col-span-8 order-2 lg:order-1">
@@ -104,7 +151,7 @@ export default function ReservationPage() {
                                         exit={{ opacity: 0, x: -20 }}
                                         transition={{ duration: 0.4 }}
                                         onSubmit={handleSubmit}
-                                        className="bg-white p-4 md:p-12 border border-italian-gold/10 shadow-xl rounded-sm min-h-[600px] flex flex-col w-full"
+                                        className="bg-white p-6 md:p-12 border border-italian-gold/10 shadow-xl rounded-sm min-h-[600px] flex flex-col w-full"
                                     >
                                         <div className="flex-1">
                                             {/* Compteur d'étape interne */}
@@ -118,7 +165,14 @@ export default function ReservationPage() {
                                             {step === 1 && <StepGuests formData={formData} setFormData={setFormData} onNext={nextStep} />}
                                             {step === 2 && <StepDate formData={formData} onChange={handleChange} formatDateDisplay={formatDateDisplay} />}
                                             {step === 3 && <StepTime formData={formData} setFormData={setFormData} />}
-                                            {step === 4 && <StepContact formData={formData} onChange={handleChange} />}
+                                            {/* On passe les erreurs à l'étape 4 uniquement */}
+                                            {step === 4 && (
+                                                <StepContact 
+                                                    formData={formData} 
+                                                    onChange={handleChange} 
+                                                    errors={errors} // On passera les erreurs ici
+                                                />
+                                            )}
                                         </div>
 
                                         {/* Boutons de navigation */}
@@ -186,7 +240,7 @@ export default function ReservationPage() {
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="relative w-full lg:aspect-[3/4.5] rounded-t-[1000px] overflow-hidden bg-[#1a1512] text-white shadow-2xl border-4 border-double border-italian-gold/30 p-8 flex flex-col items-center pt-10 lg:pt-24"
+                            className="relative w-full lg:aspect-[3/4.5] rounded-3xl lg:rounded-t-[1000px] overflow-hidden bg-[#1a1512] text-white shadow-2xl border-4 border-double border-italian-gold/30 p-8 flex flex-col items-center pt-10 lg:pt-24"
                         >
                             {/* Fond image */}
                             <div className="absolute inset-0 z-0 opacity-20">
