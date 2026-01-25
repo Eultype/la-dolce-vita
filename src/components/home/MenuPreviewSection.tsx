@@ -70,7 +70,7 @@ const MenuPreviewSection = () => {
                 {/* Grilles de plat */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
                     {dishes
-                        .filter(dish => ["Margherita", "Spaghetti alla Carbonara", "Tiramisù"].includes(dish.name))
+                        .filter(dish => ["Margherita", "Carbonara", "Tiramisù"].includes(dish.name))
                         .map((dish, index) => (
                         <motion.div
                             key={dish.name}
@@ -95,7 +95,7 @@ const MenuPreviewSection = () => {
                             
                             {/* Détails */}
                             <div className="space-y-3 px-2">
-                                <div className="flex justify-between items-baseline border-b border-italian-gold/10 py-3 transition-colors duration-500 group-hover:border-italian-gold/40 relative">
+                                <div className="flex justify-between items-baseline gap-2 border-b border-italian-gold/10 py-3 transition-colors duration-500 group-hover:border-italian-gold/40 relative">
                                     <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground transition-colors duration-300 group-hover:text-italian-gold">
                                         {dish.name}
                                     </h3>

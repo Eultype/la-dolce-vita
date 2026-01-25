@@ -83,7 +83,7 @@ export const dishes = [
 
     // PRIMI PIATTI (Pâtes)
     {
-        name: "Spaghetti alla Carbonara",
+        name: "Carbonara",
         description: "Spaghetti, guanciale croustillant et crème d'œufs bio.",
         price: "18",
         image: "/images/carbonara-romana.jpg",

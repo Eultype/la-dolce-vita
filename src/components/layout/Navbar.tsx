@@ -25,6 +25,7 @@ const navLinks = [
 // Composant de la Navbar
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isAnimating, setIsAnimating] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const pathname = usePathname();
 
@@ -37,6 +38,15 @@ export function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    // Verrouiller le scroll quand le menu est ouvert
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+    }, [isOpen]);
+
     // Détermine si on est sur la page d'accueil
     const isHome = pathname === "/";
 
@@ -45,10 +55,15 @@ export function Navbar() {
     const hoverColor = isHome && !isScrolled ? "hover:text-white/80" : "hover:text-italian-gold";
     const logoColor = isHome && !isScrolled ? "text-white" : "text-foreground";
 
+    // État combiné : Menu ouvert OU en cours d'animation (ouverture/fermeture)
+    const isMenuActive = isOpen || isAnimating;
+
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-                isScrolled
+            className={`fixed top-0 left-0 right-0 z-[100] ${
+                isMenuActive ? "bg-transparent duration-0" : "transition-all duration-500"
+            } ${
+                !isMenuActive && isScrolled
                     ? "bg-[#FDFBF7]/90 backdrop-blur-md shadow-sm py-2"
                     : "bg-transparent py-6"
             }`}
@@ -64,7 +79,7 @@ export function Navbar() {
                     </Link>
 
                     {/* Navigation Ordinateur */}
-                    <div className="hidden md:flex items-center gap-10">
+                    <div className="hidden lg:flex items-center gap-10">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.href}
@@ -79,7 +94,7 @@ export function Navbar() {
 
                     {/* Boutons CTA & Menu mobile */}
                     <div className="flex items-center gap-4">
-                        <div className="hidden md:block">
+                        <div className="hidden lg:block">
                             <Button 
                                 variant="ghost" 
                                 size="sm" 
@@ -97,7 +112,7 @@ export function Navbar() {
                         {/* Bouton Menu Mobile */}
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className={`md:hidden p-2 transition-colors duration-300 ${textColor}`}
+                            className={`lg:hidden p-2 transition-colors duration-300 ${textColor}`}
                             aria-label="Toggle menu"
                         >
                             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -107,15 +122,24 @@ export function Navbar() {
             </div>
 
             {/* Menu mobile */}
-            <AnimatePresence>
+            <AnimatePresence onExitComplete={() => setIsAnimating(false)}>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: "-100%" }}
+                        initial={{ opacity: 1, y: "-100%" }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: "-100%" }}
-                        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                        className="fixed inset-0 z-40 bg-[#1a1512] flex flex-col justify-center items-center"
+                        exit={{ opacity: 1, y: "-100%" }}
+                        transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
+                        onAnimationStart={() => setIsAnimating(true)} // Début de l'anim
+                        className="fixed inset-0 z-[100] bg-[#1a1512] flex flex-col justify-center items-center"
                     >
+                        {/* Bouton Fermer Interne */}
+                        <button 
+                            onClick={() => setIsOpen(false)}
+                            className="absolute top-6 right-6 p-2 text-white/50 hover:text-white transition-colors"
+                        >
+                            <X className="w-8 h-8" />
+                        </button>
+
                         <div className="flex flex-col gap-8 text-center">
                             {navLinks.map((link, i) => (
                                 <motion.div
