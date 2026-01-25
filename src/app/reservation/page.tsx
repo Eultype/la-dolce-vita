@@ -38,13 +38,6 @@ export default function ReservationPage() {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [errors, setErrors] = useState<Record<string, string>>({}); // Stockage des erreurs de validation
 
-    // Scroll parallax pour le texte de fond
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start end", "end start"],
-    });
-    const xText = useTransform(scrollYProgress, [0, 1], ["25%", "-20%"]);
-
     // Gestion des champs
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -86,11 +79,11 @@ export default function ReservationPage() {
             });
             setErrors(formattedErrors);
             console.log("Erreurs de validation:", formattedErrors);
-            return; // On arrête tout si invalide
+            return;
         }
 
         // Si valide
-        setErrors({}); // Nettoyer les erreurs
+        setErrors({});
         setTimeout(() => setIsSubmitted(true), 1500);
     };
 
@@ -102,20 +95,7 @@ export default function ReservationPage() {
 
     return (
         <div className="bg-[#FDFBF7] overflow-hidden relative" ref={containerRef}>
-            {/* Background */}
-            <div className="fixed inset-0 pointer-events-none opacity-[0.04] z-50 mix-blend-overlay"
-                 style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}>
-            </div>
-            <div className="absolute top-[2%] -left-[10%] w-[120%] overflow-hidden pointer-events-none opacity-[0.03] select-none z-0">
-                <motion.div style={{ x: xText }} className="whitespace-nowrap">
-                    <h2 className="font-serif text-[20vw] leading-none font-bold text-black tracking-tighter">
-                        PRENOTARE
-                    </h2>
-                </motion.div>
-            </div>
-
             <div className="relative z-10 pt-32 pb-20 container mx-auto px-4">
-
                 {/* Header */}
                 <div className="text-center mb-16">
                     <span className="text-italian-gold text-[10px] font-bold tracking-[0.4em] uppercase mb-4 block">Benvenuti</span>
@@ -151,7 +131,7 @@ export default function ReservationPage() {
                                         exit={{ opacity: 0, x: -20 }}
                                         transition={{ duration: 0.4 }}
                                         onSubmit={handleSubmit}
-                                        className="bg-white p-6 md:p-12 border border-italian-gold/10 shadow-xl rounded-sm min-h-[600px] flex flex-col w-full"
+                                        className="bg-white p-4 md:p-12 border border-italian-gold/10 shadow-xl rounded-sm min-h-[600px] flex flex-col w-full"
                                     >
                                         <div className="flex-1">
                                             {/* Compteur d'étape interne */}
@@ -176,7 +156,7 @@ export default function ReservationPage() {
                                         </div>
 
                                         {/* Boutons de navigation */}
-                                        <div className="flex items-center justify-between pt-4 mt-auto border-t border-gray-50">
+                                        <div className="flex items-center justify-between pt-4 mt-auto border-t gap-1 border-gray-50">
                                             {step > 1 ? (
                                                 <Button type="button" variant="outline" onClick={prevStep} className="gap-2 border-gray-200 hover:border-italian-gold text-muted-foreground hover:text-italian-gold">
                                                     <ChevronLeft className="w-4 h-4" /> Retour
@@ -240,7 +220,7 @@ export default function ReservationPage() {
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="relative w-full lg:aspect-[3/4.5] rounded-3xl lg:rounded-t-[1000px] overflow-hidden bg-[#1a1512] text-white shadow-2xl border-4 border-double border-italian-gold/30 p-8 flex flex-col items-center pt-10 lg:pt-24"
+                            className="relative w-full lg:aspect-[3/4.5] rounded-3xl rounded-t-[1000px] overflow-hidden bg-[#1a1512] text-white shadow-2xl border-4 border-double border-italian-gold/30 p-8 flex flex-col items-center pt-10 lg:pt-24"
                         >
                             {/* Fond image */}
                             <div className="absolute inset-0 z-0 opacity-20">
