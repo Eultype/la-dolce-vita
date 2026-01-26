@@ -89,11 +89,21 @@ export function Footer() {
 
                     <div className="w-full flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-white/30 gap-4 border-t border-white/5 pt-8">
                         <p>© 2026 La Dolce Vita. Bruxelles.</p>
+                        
                         <div className="flex gap-8">
                             <Link href="/mentions" className="hover:text-white transition-colors">Mentions</Link>
                             <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
                             <Link href="/cookies" className="hover:text-white transition-colors">Cookies</Link>
                         </div>
+
+                        <a 
+                            href="https://github.com/Eultype" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="hover:text-italian-gold transition-colors duration-300"
+                        >
+                            Développé avec passion par Samuël Darry
+                        </a>
                     </div>
                 </div>
             </div>
