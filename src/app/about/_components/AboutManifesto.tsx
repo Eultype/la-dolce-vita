@@ -19,9 +19,9 @@ export default function AboutManifesto() {
                 <div className="relative py-6 px-4">
                     {/* Quote gauche */}
                     <Quote className="absolute top-0 left-0 w-10 h-10 text-italian-gold/20 fill-current opacity-50" />
-                    <h3 className="font-serif text-3xl md:text-5xl leading-tight mb-8 italic text-foreground font-light px-8 w-full">
+                    <h2 className="font-serif text-3xl md:text-5xl leading-tight mb-8 italic text-foreground font-light px-8 w-full">
                         "Nous n'avons pas hérité de recettes, nous avons hérité d'une mémoire. Chaque assiette est un souvenir que nous partageons avec vous."
-                    </h3>
+                    </h2>
                     {/* Quote droit */}
                     <Quote className="absolute bottom-0 right-0 w-10 h-10 text-italian-gold/20 fill-current opacity-50 rotate-180" />
                 </div>

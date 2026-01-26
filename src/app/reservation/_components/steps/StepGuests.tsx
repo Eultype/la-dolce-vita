@@ -12,7 +12,7 @@ interface StepProps {
 export default function StepGuests({ formData, setFormData, onNext }: StepProps) {
     return (
         <div className="space-y-10 text-center">
-            <h3 className="font-serif text-3xl mb-20">Pour combien de personnes ?</h3>
+            <h2 className="font-serif text-3xl mb-20">Pour combien de personnes ?</h2>
             <div className="grid grid-cols-4 gap-4 w-full max-w-md mx-auto" style={{ gridTemplateColumns: "repeat(4, minmax(0, 1fr))" }}>
                 {[1,2,3,4,5,6,7,8].map(num => (
                     <button

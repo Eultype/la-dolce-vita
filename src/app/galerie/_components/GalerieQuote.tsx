@@ -19,12 +19,11 @@ export default function GalerieQuote() {
                 {/* Quote gauche */}
                 <Quote className="absolute -top-12 left-0 w-10 h-10 text-italian-gold/20 fill-current opacity-50 hidden md:block" />
 
-                <div className="max-w-4xl mx-auto text-center px-4">
-                    <h3 className="font-serif text-3xl md:text-5xl leading-tight text-foreground italic font-light relative z-10">
-                        "C'est en regardant par la fenêtre que le voyage [culinaire] commence."
-                    </h3>
-                </div>
-
+                                    <div className="max-w-4xl mx-auto text-center px-4">
+                                        <h2 className="font-serif text-3xl md:text-5xl leading-tight text-foreground italic font-light relative z-10">
+                                            "C'est en regardant par la fenêtre que le voyage [culinaire] commence."
+                                        </h2>
+                                    </div>
                 {/* Quote droit */}
                 <Quote className="absolute -bottom-12 right-0 w-10 h-10 text-italian-gold/20 fill-current opacity-50 rotate-180 hidden md:block" />
             </motion.div>

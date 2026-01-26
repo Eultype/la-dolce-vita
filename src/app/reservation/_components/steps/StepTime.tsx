@@ -11,7 +11,7 @@ interface StepProps {
 export default function StepTime({ formData, setFormData }: StepProps) {
     return (
         <div className="space-y-10">
-            <h3 className="font-serif text-3xl mb-20">À quelle heure ?</h3>
+            <h2 className="font-serif text-3xl mb-20">À quelle heure ?</h2>
 
             <div className="grid grid-cols-3 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
                 {["18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30"].map(t => (

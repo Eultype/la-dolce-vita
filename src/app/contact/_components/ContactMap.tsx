@@ -12,6 +12,7 @@ export default function ContactMap() {
                     style={{ border: 0 }} 
                     allowFullScreen 
                     loading="lazy"
+                    title="Emplacement du restaurant La Dolce Vita sur Google Maps"
                     className="w-full h-full"
                 ></iframe>
             </div>

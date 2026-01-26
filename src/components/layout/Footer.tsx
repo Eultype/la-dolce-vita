@@ -22,10 +22,10 @@ export function Footer() {
                             L'authenticité italienne au cœur de Bruxelles. Une cuisine de passion depuis 1985.
                         </p>
                         <div className="flex gap-4 pt-2">
-                            <a href={contactInfo.social.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-italian-gold hover:border-italian-gold hover:text-[#1a1512] transition-all duration-300">
+                            <a href={contactInfo.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Suivez-nous sur Instagram" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-italian-gold hover:border-italian-gold hover:text-[#1a1512] transition-all duration-300">
                                 <Instagram className="w-4 h-4" />
                             </a>
-                            <a href={contactInfo.social.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-italian-gold hover:border-italian-gold hover:text-[#1a1512] transition-all duration-300">
+                            <a href={contactInfo.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Suivez-nous sur Facebook" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-italian-gold hover:border-italian-gold hover:text-[#1a1512] transition-all duration-300">
                                 <Facebook className="w-4 h-4" />
                             </a>
                         </div>

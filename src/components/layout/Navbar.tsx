@@ -72,7 +72,7 @@ export function Navbar() {
                 <div className="flex items-center justify-between">
                     
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2 group" onClick={() => setIsOpen(false)}>
+                    <Link href="/" aria-label="La Dolce Vita - Retour à l'accueil" className="flex items-center gap-2 group" onClick={() => setIsOpen(false)}>
                         <div className={`font-serif text-2xl md:text-3xl font-bold tracking-tight transition-colors duration-300 ${logoColor}`}>
                             La Dolce <span className="italic font-light">Vita</span>
                         </div>
@@ -113,9 +113,9 @@ export function Navbar() {
                         <button
                             onClick={() => setIsOpen(!isOpen)}
                             className={`xl:hidden p-2 transition-colors duration-300 ${textColor}`}
-                            aria-label="Toggle menu"
+                            aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
                         >
-                            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                            {isOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
                         </button>
                     </div>
                 </div>
@@ -135,6 +135,7 @@ export function Navbar() {
                         {/* Bouton Fermer Interne */}
                         <button 
                             onClick={() => setIsOpen(false)}
+                            aria-label="Fermer le menu"
                             className="absolute top-6 right-6 p-2 text-white/50 hover:text-white transition-colors"
                         >
                             <X className="w-8 h-8" />

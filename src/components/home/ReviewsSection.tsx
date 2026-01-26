@@ -80,9 +80,9 @@ const ReviewsSection = () => {
                             {/* Avis */}
                             <div className="relative mb-10 px-4 md:px-12">
                                 <Quote className="absolute -top-8 -left-4 w-12 h-12 text-italian-gold/10 fill-current opacity-50" />
-                                <h3 className="font-serif text-3xl md:text-5xl leading-tight text-foreground italic font-light">
+                                <h2 className="font-serif text-3xl md:text-5xl leading-tight text-foreground italic font-light">
                                     "{reviews[currentIndex].text}"
-                                </h3>
+                                </h2>
                                 <Quote className="absolute -bottom-8 -right-4 w-12 h-12 text-italian-gold/10 fill-current opacity-50 rotate-180" />
                             </div>
 
@@ -101,12 +101,14 @@ const ReviewsSection = () => {
                     {/* Contrôles Latéraux */}
                     <button 
                         onClick={prevReview}
+                        aria-label="Avis précédent"
                         className="absolute left-0 top-1/2 -translate-y-1/2 p-4 text-italian-gold/30 hover:text-italian-gold transition-colors hidden md:block"
                     >
                         <ChevronLeft className="w-8 h-8" />
                     </button>
                     <button 
                         onClick={nextReview}
+                        aria-label="Avis suivant"
                         className="absolute right-0 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 text-italian-gold/30 hover:text-italian-gold transition-colors hidden md:block"
                     >
                         <ChevronRight className="w-8 h-8" />
@@ -119,6 +121,7 @@ const ReviewsSection = () => {
                         <button
                             key={index}
                             onClick={() => setCurrentIndex(index)}
+                            aria-label={`Aller à l'avis ${index + 1}`}
                             className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${
                                 index === currentIndex ? "bg-italian-gold w-4" : "bg-italian-gold/20"
                             }`}

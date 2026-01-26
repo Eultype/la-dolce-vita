@@ -12,7 +12,7 @@ interface StepProps {
 export default function StepDate({ formData, onChange, formatDateDisplay }: StepProps) {
     return (
         <div className="space-y-8">
-            <h3 className="font-serif text-3xl mb-24">Quel jour nous rejoignez-vous ?</h3>
+            <h2 className="font-serif text-3xl mb-24">Quel jour nous rejoignez-vous ?</h2>
             <div className="max-w-md mx-auto space-y-4">
                 <label className="text-xs uppercase tracking-widest font-bold text-italian-gold flex items-center gap-2">
                     <Calendar className="w-4 h-4" /> Sélectionner une date

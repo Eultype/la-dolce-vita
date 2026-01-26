@@ -11,7 +11,7 @@ interface StepProps {
 export default function StepContact({ formData, onChange, errors }: StepProps) {
     return (
         <div className="space-y-8">
-            <h3 className="font-serif text-3xl mb-6">Dernière étape</h3>
+            <h2 className="font-serif text-3xl mb-6">Dernière étape</h2>
 
             <div className="grid gap-6">
                 <div className="space-y-1">

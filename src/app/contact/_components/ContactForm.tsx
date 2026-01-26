@@ -41,12 +41,11 @@ export default function ContactForm() {
         >
             <div className="bg-white p-8 md:p-12 border border-italian-gold/10 shadow-xl relative">
                 {!isSubmitted ? (
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-                        <div>
-                            <span className="text-italian-gold text-[10px] font-bold tracking-[0.3em] uppercase mb-2 block">Scrivici</span>
-                            <h3 className="font-serif text-3xl mb-2">Envoyez un message</h3>
-                        </div>
-                        
+                                                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+                                                            <div>
+                                                                <span className="text-italian-gold text-[10px] font-bold tracking-[0.3em] uppercase mb-2 block">Scrivici</span>
+                                                                <h2 className="font-serif text-3xl mb-2">Envoyez un message</h2>
+                                                            </div>                        
                         <div className="grid gap-8">
                             <div className="space-y-2">
                                 <label className="text-xs uppercase tracking-widest font-bold text-muted-foreground">Nom & Prénom</label>

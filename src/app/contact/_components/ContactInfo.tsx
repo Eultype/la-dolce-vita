@@ -19,7 +19,7 @@ export default function ContactInfo() {
         >
             <div>
                 <span className="text-italian-gold text-[10px] font-bold tracking-[0.3em] uppercase mb-4 block">Informazioni</span>
-                <h3 className="font-serif text-4xl mb-6">Nous trouver</h3>
+                <h2 className="font-serif text-4xl mb-6">Nous trouver</h2>
                 <p className="text-muted-foreground font-light leading-relaxed mb-8">
                     Situé au cœur d'Ixelles, La Dolce Vita est un refuge pour les amoureux de la gastronomie italienne authentique.
                 </p>
@@ -31,7 +31,7 @@ export default function ContactInfo() {
                         <MapPin className="w-5 h-5" />
                     </div>
                     <div>
-                        <h4 className="font-serif text-xl mb-2">Adresse</h4>
+                        <h3 className="font-serif text-xl mb-2">Adresse</h3>
                         <p className="text-muted-foreground font-light">{contactInfo.address.street}<br/>{contactInfo.address.zip} {contactInfo.address.city}, {contactInfo.address.country}</p>
                         <a href={contactInfo.address.googleMapsLink} target="_blank" rel="noopener noreferrer" className="text-xs uppercase tracking-widest font-bold mt-2 inline-block border-b border-transparent hover:border-foreground transition-all">Itinéraire</a>
                     </div>
@@ -42,7 +42,7 @@ export default function ContactInfo() {
                         <Clock className="w-5 h-5" />
                     </div>
                     <div className="w-full">
-                        <h4 className="font-serif text-xl mb-2">Horaires</h4>
+                        <h3 className="font-serif text-xl mb-2">Horaires</h3>
                         <ul className="space-y-1">
                             {contactInfo.openingHours.map((item, index) => (
                                 <li key={index} className="text-muted-foreground font-light flex lg:gap-4">
@@ -59,7 +59,7 @@ export default function ContactInfo() {
                         <Phone className="w-5 h-5" />
                     </div>
                     <div className="flex flex-col items-start">
-                        <h4 className="font-serif text-xl mb-2">Contact</h4>
+                        <h3 className="font-serif text-xl mb-2">Contact</h3>
                         <a href={contactInfo.contact.phoneLink} className="text-muted-foreground font-light hover:text-italian-gold transition-colors mb-1">
                             {contactInfo.contact.phone}
                         </a>

@@ -35,7 +35,7 @@ export default function AboutValues() {
                         <div className="w-12 h-12 border border-italian-gold/30 rounded-full mx-auto flex items-center justify-center mb-6">
                             <span className="text-italian-gold font-serif italic text-lg">{i + 1}</span>
                         </div>
-                        <h4 className="font-serif text-2xl text-foreground">{item.title}</h4>
+                        <h3 className="font-serif text-2xl text-foreground">{item.title}</h3>
                         <p className="text-muted-foreground font-light leading-relaxed">{item.desc}</p>
                     </motion.div>
                 ))}
