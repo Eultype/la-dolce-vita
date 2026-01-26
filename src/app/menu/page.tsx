@@ -2,6 +2,12 @@
 import MenuHero from "./_components/MenuHero";
 import MenuContent from "./_components/MenuContent";
 import MenuCTA from "./_components/MenuCTA";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "La Carte",
+    description: "Découvrez notre sélection de pâtes fraîches, pizzas artisanales et spécialités italiennes authentiques.",
+};
 
 // Page La carte - SERVER COMPONENT
 export default function MenuPage() {

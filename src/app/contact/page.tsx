@@ -3,6 +3,12 @@ import ContactHero from "./_components/ContactHero";
 import ContactInfo from "./_components/ContactInfo";
 import ContactForm from "./_components/ContactForm";
 import ContactMap from "./_components/ContactMap";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Contact",
+    description: "Une question ou une demande spéciale ? Contactez l'équipe de La Dolce Vita.",
+};
 
 // Page contact
 export default function ContactPage() {

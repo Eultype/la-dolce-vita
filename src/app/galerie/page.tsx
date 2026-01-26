@@ -2,6 +2,12 @@
 import GalerieHero from "./_components/GalerieHero";
 import GalerieGrid from "./_components/GalerieGrid";
 import GalerieQuote from "./_components/GalerieQuote";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Galerie",
+    description: "Immersion visuelle dans l'ambiance et les plats de La Dolce Vita.",
+};
 
 // Page galerie
 export default function GaleriePage() {
