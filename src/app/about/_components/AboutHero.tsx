@@ -9,7 +9,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 export default function AboutHero() {
     const containerRef = useRef(null);
 
-    // Scroll pour le watermark
+    // Scroll pour le texte de fond
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start end", "end start"],

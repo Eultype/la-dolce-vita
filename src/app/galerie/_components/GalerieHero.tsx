@@ -8,6 +8,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 // Composant Hero de la page " Galerie "
 export default function GalerieHero() {
     const containerRef = useRef(null);
+
+    // Scroll pour le texte de fond
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start end", "end start"],

@@ -8,11 +8,13 @@ import { motion, useScroll, useTransform } from "framer-motion";
 // Composant Hero de la page " Contact "
 export default function ContactHero() {
     const containerRef = useRef(null);
-    // Parallax pour le texte de fond
+
+    // Scroll pour le texte de fond
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start end", "end start"],
     });
+
     const xText = useTransform(scrollYProgress, [0, 1], ["5%", "0%"]);
 
     return (

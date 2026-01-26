@@ -9,7 +9,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 export default function MenuHero() {
     const containerRef = useRef(null);
 
-    // Scroll pour le watermark "LA CARTA"
+    // Scroll pour le texte de fond
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start end", "end start"],
