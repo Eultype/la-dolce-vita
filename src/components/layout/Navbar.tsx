@@ -164,7 +164,12 @@ export function Navbar() {
                                 transition={{ delay: 0.6 }}
                                 className="mt-8"
                             >
-                                <Button variant="hero" size="xl" className="rounded-full px-12" asChild>
+                                <Button 
+                                    variant="hero" 
+                                    size="xl" 
+                                    className="rounded-full px-12 bg-italian-gold text-white hover:bg-white hover:text-black border-none transition-all duration-500" 
+                                    asChild
+                                >
                                     <Link href="/reservation" onClick={() => setIsOpen(false)}>Réserver une table</Link>
                                 </Button>
                             </motion.div>

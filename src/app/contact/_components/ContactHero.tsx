@@ -20,7 +20,7 @@ export default function ContactHero() {
     return (
         <div ref={containerRef}>
             {/* Texte de fond "CONTATTO" */}
-            <div className="absolute top-[5.5%] md:top-[4.5%] lg:top-[5.5%] xl:top-[4.5%] left-0 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none z-0">
+            <div className="absolute top-[6%] md:top-[5%] lg:top-[6.5%] xl:top-[5.5%] left-0 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none z-0">
                 <motion.div style={{ x: xText }} className="whitespace-nowrap flex justify-end">
                     <h2 className="font-serif text-[20vw] leading-none font-bold text-black tracking-tighter">
                         CONTATTO
