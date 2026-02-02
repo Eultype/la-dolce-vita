@@ -20,9 +20,9 @@ export default function GalerieHero() {
     return (
         <div ref={containerRef}>
             {/* Texte de fond "GALLERIA" */}
-            <div className="absolute top-[10.2%] md:top-[10.3%] lg:top-[13%] xl:top-[4.7%] left-0 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none z-0">
+            <div className="absolute top-[10.2%] md:top-[10.3%] lg:top-[13%] xl:top-[6%] left-0 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none z-0">
                 <motion.div style={{ x: xText }} className="whitespace-nowrap">
-                    <h2 className="font-serif text-[25vw] leading-none font-bold text-black tracking-tighter">
+                    <h2 className="font-serif text-[22vw] leading-none font-bold text-black tracking-tighter">
                         GALLERIA
                     </h2>
                 </motion.div>

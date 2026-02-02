@@ -20,9 +20,9 @@ export default function MenuHero() {
     return (
         <div ref={containerRef}>
             {/* Texte de fond "LA CARTA" */}
-            <div className="absolute top-[8.5%] md:top-[12.7%] lg:top-[15.5%] xl:top-[6.5%] left-0 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none z-0">
+            <div className="absolute top-[8.5%] md:top-[12.7%] lg:top-[15.5%] xl:top-[8%] left-0 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none z-0">
                 <motion.div style={{ x: xText }} className="whitespace-nowrap">
-                    <h2 className="font-serif text-[25vw] leading-none font-bold text-black tracking-tighter">
+                    <h2 className="font-serif text-[22vw] leading-none font-bold text-black tracking-tighter">
                         LA CARTA
                     </h2>
                 </motion.div>

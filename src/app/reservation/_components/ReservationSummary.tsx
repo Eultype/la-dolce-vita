@@ -41,7 +41,7 @@ export default function ReservationSummary({ formData, formatDateDisplay }: Rese
                 {/* Contenu Récap */}
                 <div className="relative z-20 w-full max-w-xs mx-auto text-center h-full flex flex-col">
                     <div className="mb-10">
-                        <h4 className="font-serif text-3xl italic text-italian-gold mb-2">Riepilogo</h4>
+                        <h4 className="font-serif text-3xl italic text-italian-gold mb-2">Récapitulatif</h4>
                         <div className="h-px w-20 bg-italian-gold/50 mx-auto"></div>
                     </div>
 
@@ -59,13 +59,13 @@ export default function ReservationSummary({ formData, formatDateDisplay }: Rese
                         {/* Date & Heure */}
                         <div className="group">
                             <div className="flex items-center justify-center gap-3 text-italian-gold/70 text-[10px] uppercase tracking-widest mb-2">
-                                <Calendar className="w-3 h-3" /> Appuntamento
+                                <Calendar className="w-3 h-3" /> Rendez-vous le
                             </div>
                             <p className="font-serif text-2xl transition-all duration-300 group-hover:text-italian-gold">
                                 {formData.date ? formatDateDisplay(formData.date) : "..."}
                             </p>
-                            <p className="text-3xl font-light text-italian-gold mt-2">
-                                {formData.time ? `${formData.time}` : "--:--"}
+                            <p className="text-3xl font-serif text-italian-gold mt-2">
+                                à {formData.time ? `${formData.time}` : "--:--"}
                             </p>
                         </div>
                     </div>

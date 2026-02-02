@@ -15,7 +15,7 @@ export default function ContactHero() {
         offset: ["start end", "end start"],
     });
 
-    const xText = useTransform(scrollYProgress, [0, 1], ["5%", "0%"]);
+    const xText = useTransform(scrollYProgress, [0, 1], ["20%", "0%"]);
 
     return (
         <div ref={containerRef}>
