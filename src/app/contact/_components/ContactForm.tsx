@@ -26,7 +26,6 @@ export default function ContactForm() {
     const onSubmit = async (data: ContactFormValues) => {
         // Simulation d'appel API
         await new Promise((resolve) => setTimeout(resolve, 1500));
-        console.log("Données valides envoyées :", data);
         setIsSubmitted(true);
         reset(); // Réinitialise le formulaire
     };

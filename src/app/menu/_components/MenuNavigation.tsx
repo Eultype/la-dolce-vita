@@ -9,7 +9,7 @@ interface MenuNavigationProps {
 // Composant MenuNavigation de la page " La carte "
 export default function MenuNavigation({ categories, activeCategory, setActiveCategory }: MenuNavigationProps) {
     return (
-        <nav className="sticky top-20 z-40 bg-[#FDFBF7]/80 backdrop-blur-md border-y border-italian-gold/20 py-6 mb-12">
+        <nav className="relative z-40 bg-[#FDFBF7]/80 backdrop-blur-md border-y border-italian-gold/20 py-6 mb-12">
             <div className="container mx-auto px-4">
                 <div className="flex justify-center flex-wrap gap-8 md:gap-16">
                     {categories.map((cat) => (

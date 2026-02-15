@@ -130,7 +130,7 @@ export function Navbar() {
                         exit={{ opacity: 1, y: "-100%" }}
                         transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
                         onAnimationStart={() => setIsAnimating(true)} // Début de l'anim
-                        className="fixed inset-0 z-[100] bg-[#1a1512] flex flex-col justify-center items-center"
+                        className="fixed inset-0 z-[110] bg-[#1a1512] flex flex-col justify-center items-center"
                     >
                         {/* Bouton Fermer Interne */}
                         <button 

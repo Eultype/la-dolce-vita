@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 // Page La carte - SERVER COMPONENT
 export default function MenuPage() {
     return (
-        <div className="bg-[#FDFBF7] min-h-screen overflow-hidden relative">
+        <div className="bg-[#FDFBF7] min-h-screen relative">
             <div className="relative z-10">
                 {/* Hero */}
                 <MenuHero />

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 // Page galerie
 export default function GaleriePage() {
     return (
-        <div className="bg-[#FDFBF7] min-h-screen overflow-hidden relative">
+        <div className="bg-[#FDFBF7] min-h-screen relative">
             {/* Header */}
             <GalerieHero />
             {/* Grille d'images (Arche et mosaïque) */}

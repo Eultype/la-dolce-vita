@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 // Page de réservation - SERVER COMPONENT
 export default function ReservationPage() {
     return (
-        <div className="bg-[#FDFBF7] overflow-hidden relative">
+        <div className="bg-[#FDFBF7] relative">
             <div className="relative z-10 pt-32 pb-20 container mx-auto px-4">
                 {/* Header */}
                 <ReservationHeader />

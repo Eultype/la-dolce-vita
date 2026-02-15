@@ -18,7 +18,7 @@ interface ReservationSummaryProps {
 // Composant arche récapitulatif de la page " Réservation "
 export default function ReservationSummary({ formData, formatDateDisplay }: ReservationSummaryProps) {
     return (
-        <div className="lg:col-span-4 order-1 lg:order-2 sticky top-32 transition-all duration-500">
+        <div className="lg:col-span-4 order-1 lg:order-2 relative transition-all duration-500">
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
